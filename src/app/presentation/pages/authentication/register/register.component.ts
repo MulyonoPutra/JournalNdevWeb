@@ -1,9 +1,9 @@
-import { RegisterDto } from './../../models/registerDto';
+import { Register } from '../../../../core/domain/dto/register';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from 'src/app/service/auth.service';
-import { TokenService } from 'src/app/service/token.service';
+import { AuthService } from 'src/app/core/service/auth.service';
+import { TokenService } from 'src/app/core/service/token.service';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +11,7 @@ import { TokenService } from 'src/app/service/token.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  register?: RegisterDto;
+  register?: Register;
   name: any;
   username: any;
   email: any;
@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegister(): void {
-    this.register = new RegisterDto(
+    this.register = new Register(
       this.name,
       this.username,
       this.email,

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Product } from 'src/app/models/product';
-import { ProductService } from 'src/app/service/product.service';
+import { Product } from 'src/app/core/domain/entities/product';
+import { ProductService } from 'src/app/core/service/product.service';
 
 @Component({
   selector: 'app-product-new',

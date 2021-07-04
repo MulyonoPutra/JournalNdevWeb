@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { LoginDto } from 'src/app/models/loginDto';
-import { AuthService } from 'src/app/service/auth.service';
-import { TokenService } from 'src/app/service/token.service';
+import { Login } from 'src/app/core/domain/dto/login';
+import { AuthService } from 'src/app/core/service/auth.service';
+import { TokenService } from 'src/app/core/service/token.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ import { TokenService } from 'src/app/service/token.service';
 export class LoginComponent implements OnInit {
   isLogged = false;
   isLoginFail = false;
-  loginDto!: LoginDto;
+  loginDto!: Login;
   username!: string;
   password!: string;
   roles: string[] = [];
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(): void {
-    this.loginDto = new LoginDto(this.username, this.password);
+    this.loginDto = new Login(this.username, this.password);
     this.authService.login(this.loginDto).subscribe(
       (data) => {
         this.isLogged = true;
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
         this.tokenService.setUserName(data.username);
         this.tokenService.setAuthorities(data.authorities);
         this.roles = data.authorities;
-        this.toastr.success('Bienvenido ' + data.username, 'OK', {
+        this.toastr.success('Welcome ' + data.username, 'OK', {
           timeOut: 3000,
           positionClass: 'toast-top-center',
         });
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
       (err) => {
         this.isLogged = false;
         this.errMsj = err.error.message;
-        this.toastr.error(this.errMsj, 'Fail', {
+        this.toastr.error(this.errMsj, 'Failed!', {
           timeOut: 3000,
           positionClass: 'toast-top-center',
         });

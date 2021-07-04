@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Product } from 'src/app/models/product';
-import { ProductService } from 'src/app/service/product.service';
-import { TokenService } from 'src/app/service/token.service';
+import { Product } from 'src/app/core/domain/entities/product';
+import { ProductService } from 'src/app/core/service/product.service';
+import { TokenService } from 'src/app/core/service/token.service';
 
 @Component({
   selector: 'app-product-list',

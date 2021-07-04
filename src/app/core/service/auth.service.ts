@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -9,15 +10,20 @@ import { Register } from '../domain/dto/register';
   providedIn: 'root',
 })
 export class AuthService {
-  authURL = 'http://localhost:8080/auth/';
 
   constructor(private httpClient: HttpClient) {}
 
   public new(register: Register): Observable<any> {
-    return this.httpClient.post<any>(this.authURL + 'new', register);
+    return this.httpClient.post<any>(
+      environment.baseEndpoint + 'auth/register',
+      register
+    );
   }
 
   public login(loginDto: Login): Observable<JWTResponse> {
-    return this.httpClient.post<JWTResponse>(this.authURL + 'login', loginDto);
+    return this.httpClient.post<JWTResponse>(
+      environment.baseEndpoint + 'auth/login',
+      loginDto
+    );
   }
 }

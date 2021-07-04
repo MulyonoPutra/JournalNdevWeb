@@ -3,5 +3,4 @@ export class JWTResponse {
   type!: string;
   username!: string;
   authorities!: string[];
-
 }

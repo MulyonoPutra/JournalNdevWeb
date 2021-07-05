@@ -10,7 +10,9 @@ import { ProductService } from 'src/app/core/service/product.service';
   styleUrls: ['./product-new.component.scss'],
 })
 export class ProductNewComponent implements OnInit {
+  
   name = '';
+
   price!: number;
 
   constructor(

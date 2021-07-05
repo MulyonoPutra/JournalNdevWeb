@@ -10,8 +10,11 @@ import { TokenService } from 'src/app/core/service/token.service';
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit {
+
   products: Product[] = [];
+
   roles!: string[];
+
   isAdmin = false;
 
   constructor(

@@ -10,6 +10,7 @@ import { ProductService } from 'src/app/core/service/product.service';
   styleUrls: ['./product-edit.component.scss'],
 })
 export class ProductEditComponent implements OnInit {
+  
   product!: Product;
 
   constructor(

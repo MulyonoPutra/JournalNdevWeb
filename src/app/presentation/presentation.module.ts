@@ -2,6 +2,7 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { IndexComponent } from './pages/index/index.component';
 import { LoginComponent } from './pages/authentication/login/login.component';
@@ -10,8 +11,11 @@ import { ProductNewComponent } from './pages/product/product-new/product-new.com
 import { ProductListComponent } from './pages/product/product-list/product-list.component';
 import { ProductEditComponent } from './pages/product/product-edit/product-edit.component';
 import { ProductDetailsComponent } from './pages/product/product-details/product-details.component';
+
 import { ProdGuardService as guard } from '../core/guards/prod-guard.service';
-import { FormsModule } from '@angular/forms';
+import { CategoryComponent } from './pages/category/category.component';
+import { CategoryRepository } from '../core/repository/category.repository';
+import { CategoryServiceImpl } from '../core/service/service-impl/category.service-impl';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -52,7 +56,9 @@ const routes: Routes = [
     ProductListComponent,
     ProductDetailsComponent,
     ProductNewComponent,
-    ProductEditComponent,MenuComponent
+    ProductEditComponent,
+    MenuComponent,
+    CategoryComponent,
   ],
   imports: [
     CommonModule,
@@ -61,5 +67,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [{ provide: CategoryRepository, useClass: CategoryServiceImpl }],
 })
 export class PresentationModule {}

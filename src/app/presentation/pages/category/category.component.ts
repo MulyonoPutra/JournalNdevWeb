@@ -1,25 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/core/domain/entities/category';
 import { CategoryRepository } from 'src/app/core/repository/category.repository';
-import { TokenService } from '../../../core/service/token.service';
+import { TokenService } from 'src/app/core/service/token.service';
 
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.scss'],
+  selector: 'app-category',
+  templateUrl: './category.component.html',
+  styleUrls: ['./category.component.scss'],
 })
-export class IndexComponent implements OnInit {
-
+export class CategoryComponent implements OnInit {
+  
   isLogged = false;
 
   username = '';
 
+  categories: Array<Category>;
+
   constructor(
     private tokenService: TokenService,
+    private categoryService: CategoryRepository
   ) {}
 
   ngOnInit() {
     this.getUserToken();
+    this.findAllCategory();
   }
 
   getUserToken(): void {
@@ -32,5 +36,10 @@ export class IndexComponent implements OnInit {
     }
   }
 
-
+  findAllCategory() {
+    this.categories = [];
+    this.categoryService.getAllCategory().subscribe((value: Category[]) => {
+      this.categories = value;
+    });
+  }
 }

@@ -1,4 +1,3 @@
-
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -20,6 +19,8 @@ import { CategoryServiceImpl } from '../core/service/service-impl/category.servi
 import { PresentationComponent } from './presentation.component';
 import { NavbarComponent } from './pages/components/navbar/navbar.component';
 import { FooterComponent } from './pages/components/footer/footer.component';
+import { CardsComponent } from './pages/components/cards/cards.component';
+import { FoldingCardComponent } from './pages/folding-card/folding-card.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,8 @@ const routes: Routes = [
       { path: '', component: IndexComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
+      { path: 'category', component: CategoryComponent },
+      { path: 'card', component: FoldingCardComponent },
       {
         path: 'list',
         component: ProductListComponent,
@@ -68,11 +71,16 @@ const routes: Routes = [
     ProductDetailsComponent,
     ProductNewComponent,
     ProductEditComponent,
-    CategoryComponent, NavbarComponent, FooterComponent
+    CategoryComponent,
+    NavbarComponent,
+    FooterComponent,
+    FoldingCardComponent,
+    CardsComponent,
   ],
   imports: [
     CommonModule,
-    FormsModule,NgxSpinnerModule,
+    FormsModule,
+    NgxSpinnerModule,
     RouterModule,
     RouterModule.forChild(routes),
   ],

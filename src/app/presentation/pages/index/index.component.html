@@ -1,7 +1,27 @@
-<app-menu></app-menu>
+
 <div class="container text-center">
   <div *ngIf="isLogged; else loggedOut">
     <h2>Welcome {{ username }}</h2>
+      <!-- <button class="button-outline" (click)="findAllCategory()">Load</button> -->
+  <div class="row">
+    <div class="column">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of categories">
+            <td>{{ category.name }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
   </div>
   <ng-template #loggedOut><h2>You are not logged in</h2></ng-template>
 </div>
+
+
+

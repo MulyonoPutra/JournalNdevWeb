@@ -11,6 +11,7 @@ import { TokenService } from '../service/token.service';
   providedIn: 'root',
 })
 export class ProdGuardService implements CanActivate {
+  
   realRol!: string;
 
   constructor(private tokenService: TokenService, private router: Router) {}

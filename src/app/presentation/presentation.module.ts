@@ -1,26 +1,30 @@
+/* Module */
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { NgxSpinnerModule } from 'ngx-spinner';
 
+/* Components */
 import { IndexComponent } from './pages/index/index.component';
 import { LoginComponent } from './pages/authentication/login/login.component';
+import { CardsComponent } from './pages/components/cards/cards.component';
+import { NavbarComponent } from './pages/components/navbar/navbar.component';
+import { FooterComponent } from './pages/components/footer/footer.component';
+import { CategoryComponent } from './pages/category/category.component';
 import { RegisterComponent } from './pages/authentication/register/register.component';
 import { ProductNewComponent } from './pages/product/product-new/product-new.component';
 import { ProductListComponent } from './pages/product/product-list/product-list.component';
 import { ProductEditComponent } from './pages/product/product-edit/product-edit.component';
+import { FoldingCardComponent } from './pages/folding-card/folding-card.component';
+import { PresentationComponent } from './presentation.component';
 import { ProductDetailsComponent } from './pages/product/product-details/product-details.component';
 
-import { ProdGuardService as guard } from '../core/guards/prod-guard.service';
-import { CategoryComponent } from './pages/category/category.component';
+/* Others */
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { CategoryRepository } from '../core/repository/category.repository';
 import { CategoryServiceImpl } from '../core/service/service-impl/category.service-impl';
-import { PresentationComponent } from './presentation.component';
-import { NavbarComponent } from './pages/components/navbar/navbar.component';
-import { FooterComponent } from './pages/components/footer/footer.component';
-import { CardsComponent } from './pages/components/cards/cards.component';
-import { FoldingCardComponent } from './pages/folding-card/folding-card.component';
+import { ProdGuardService as guard } from '../core/guards/prod-guard.service';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -58,7 +62,7 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
@@ -76,6 +80,7 @@ const routes: Routes = [
     FooterComponent,
     FoldingCardComponent,
     CardsComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     CommonModule,

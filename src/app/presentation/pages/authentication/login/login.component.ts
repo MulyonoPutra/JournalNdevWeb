@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Login } from 'src/app/core/domain/dto/login';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { TokenService } from 'src/app/core/service/token.service';
+import { UtilityService } from 'src/app/core/service/utility.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -31,10 +32,16 @@ export class LoginComponent implements OnInit {
     private tokenService: TokenService,
     private authService: AuthService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private utils: UtilityService
   ) {}
 
   ngOnInit() {
+    this.getUserToken();
+    this.utils.setSpinner();
+  }
+
+  getUserToken() {
     if (this.tokenService.getToken()) {
       this.isLogged = true;
       this.isLoginFail = false;
@@ -62,7 +69,6 @@ export class LoginComponent implements OnInit {
           timeOut: 3000,
           positionClass: 'toast-top-center',
         });
-        // console.log(err.error.message);
       }
     );
   }

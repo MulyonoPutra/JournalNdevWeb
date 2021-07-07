@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/core/domain/entities/category';
 import { CategoryRepository } from 'src/app/core/repository/category.repository';
 import { TokenService } from 'src/app/core/service/token.service';
+import { UtilityService } from 'src/app/core/service/utility.service';
 
 @Component({
   selector: 'app-category',
@@ -18,12 +19,14 @@ export class CategoryComponent implements OnInit {
 
   constructor(
     private tokenService: TokenService,
+    private utils: UtilityService,
     private categoryService: CategoryRepository
   ) {}
 
   ngOnInit() {
     this.getUserToken();
     this.findAllCategory();
+    this.utils.setSpinner();
   }
 
   getUserToken(): void {

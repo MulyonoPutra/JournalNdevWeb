@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { TokenService } from 'src/app/core/service/token.service';
+import { UtilityService } from 'src/app/core/service/utility.service';
 
 @Component({
   selector: 'app-register',
@@ -23,13 +24,15 @@ export class RegisterComponent implements OnInit {
     private tokenService: TokenService,
     private authService: AuthService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private utils: UtilityService
   ) {}
 
   ngOnInit() {
     if (this.tokenService.getToken()) {
       this.isLogged = true;
     }
+    this.utils.setSpinner()
   }
 
   onRegister(): void {

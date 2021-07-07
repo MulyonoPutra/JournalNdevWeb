@@ -1,10 +1,8 @@
-import { NgxSpinnerService } from 'ngx-spinner';
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/core/domain/entities/category';
 import { CategoryRepository } from 'src/app/core/repository/category.repository';
 import { TokenService } from '../../../core/service/token.service';
-import { Subscription, Subject, Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { UtilityService } from 'src/app/core/service/utility.service';
 
 @Component({
   selector: 'app-index',
@@ -18,50 +16,18 @@ export class IndexComponent implements OnInit {
 
   categories: Array<Category>;
 
-  private updateSubscription: Subscription;
-
-  private unsubscribe: Subject<any> = new Subject();
-
-  sub: any;
-
   constructor(
     private tokenService: TokenService,
     private categoryService: CategoryRepository,
-    private spinner: NgxSpinnerService,
-    private router: Router
+    private utils: UtilityService
   ) {}
 
   ngOnInit() {
-    this.refresh();
-    //this.clearTimeout();
-    this.setSpinner();
     this.getUserToken();
     this.findAllCategory();
+    this.utils.setSpinner();
   }
 
-  ngOnDestroy() {
-    this.unsubscribe.next();
-    this.unsubscribe.complete();
-  }
-
-  setSpinner() {
-    this.spinner.show();
-    setTimeout(() => {
-      /** spinner ends after 1 seconds */
-      this.spinner.hide();
-    }, 1000);
-  }
-
-  refresh(): void {
-    
-//location.reload(true);
-  }
-
-/*   clearTimeout() {
-    setTimeout(() => {
-      window.clearTimeout(this.interval);
-    }, 3000);
-  } */
 
   getUserToken(): void {
     if (this.tokenService.getToken()) {

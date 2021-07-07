@@ -1,9 +1,6 @@
-
-
 <div class="container text-center">
   <div *ngIf="isLogged; else loggedOut">
     <div class="column-center">
-      <!-- <button class="button-outline" (click)="findAllCategory()">Load</button> -->
       <div class="row">
         <div class="column">
           <table>
@@ -22,5 +19,7 @@
       </div>
     </div>
   </div>
-  <ng-template #loggedOut><h2>You are not logged in</h2></ng-template>
+  <ng-template #loggedOut>
+    <app-login></app-login>
+  </ng-template>
 </div>

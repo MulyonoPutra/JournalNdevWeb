@@ -10,7 +10,7 @@ import { ProductService } from 'src/app/core/service/product.service';
   styleUrls: ['./product-edit.component.scss'],
 })
 export class ProductEditComponent implements OnInit {
-  
+
   product!: Product;
 
   constructor(
@@ -44,7 +44,7 @@ export class ProductEditComponent implements OnInit {
           timeOut: 3000,
           positionClass: 'toast-top-center',
         });
-        this.router.navigate(['/lista']);
+        this.router.navigate(['/list']);
       },
       (err) => {
         this.toastr.error(err.error.mensaje, 'Fail', {

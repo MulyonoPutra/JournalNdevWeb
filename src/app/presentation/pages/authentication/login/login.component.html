@@ -1,4 +1,4 @@
-
+<!--
 <div class="text-center" *ngIf="isLogged; else loggedOut">
     <h2>You have already logged in</h2>
 </div>
@@ -37,4 +37,111 @@
             </div>
         </div>
     </div>
-</ng-template>
+</ng-template> -->
+
+<div class="text-center" *ngIf="isLogged; else loggedOut">
+  <app-index></app-index>
+</div>
+
+<div>
+  <ng-template #loggedOut>
+    <div class="content">
+      <div class="container registration-form">
+        <div class="row">
+          <div class="col-md-6">
+            <img
+              src="/assets/images/svg/book-lovers.svg"
+              alt="Image"
+              class="img-fluid"
+            />
+          </div>
+          <div class="col-md-6">
+            <div class="row justify-content-center">
+              <div class="col-md-8">
+                <div class="mb-4">
+                  <h3>Sign In</h3>
+                  <p class="mb-4">
+                    Lorem ipsum dolor sit amet elit. Sapiente sit aut eos
+                    consectetur adipisicing.
+                  </p>
+                </div>
+                <form name="form" #f="ngForm" (ngSubmit)="onLogin()" novalidate>
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      name="username"
+                      id="username"
+                      class="form-control"
+                      [(ngModel)]="username"
+                      placeholder="Username"
+                      required
+                    />
+                  </div>
+                  &nbsp;
+                  <div class="form-group">
+                    <input
+                      type="password"
+                      name="password"
+                      id="password"
+                      class="form-control"
+                      [(ngModel)]="password"
+                      placeholder="Password"
+                      required
+                    />
+                  </div>
+                  &nbsp;
+                  <div class="form-group">
+                    <button class="btn btn-primary" [disabled]="!f.valid">
+                      Login
+                    </button>
+                    <br />
+                    <div
+                      *ngIf="f.submitted && isLoginFail"
+                      class="alert alert-danger"
+                    >
+                      Login failed: {{ errorMessage }}
+                    </div>
+                  </div>
+                  <span class="d-block text-left my-4 text-muted">
+                    <a routerLink="/register">
+                      &mdash; Don't have an account? Sign Up &mdash;
+                    </a>
+                  </span>
+
+                  <span class="d-block text-left my-4 text-muted"
+                    >&mdash; or login with &mdash;</span>
+
+                  <div class="social-login">
+                    <div class="row">
+                      <div class="col">
+                        <img
+                          src="/assets/images/png/instagram.png"
+                          alt="instagram"
+                          class="social-size"
+                        />
+                      </div>
+                      <div class="col">
+                        <img
+                          src="/assets/images/png/twitter.png"
+                          alt="twitter"
+                          class="social-size"
+                        />
+                      </div>
+                      <div class="col">
+                        <img
+                          src="/assets/images/png/facebook.png"
+                          alt="facebook"
+                          class="social-size"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

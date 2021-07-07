@@ -1,50 +1,56 @@
-
 <div class="text-center" *ngIf="isLogged; else loggedOut">
-    <h2>Ya has iniciado sesión</h2>
+  <app-index></app-index>
 </div>
 
-<ng-template #loggedOut>
-    <div class="container d-flex justify-content-center">
-        <div class="card">
-            <div class="card-header">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                      <a class="nav-link" routerLink="/login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link active" routerLink="/register">Create Account</a>
-                    </li>
-
-                  </ul>
-            </div>
-            <div class="card-body">
-              <form #f="ngForm" (ngSubmit)="onRegister()" novalidate>
-                <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" name="name" id="name" class="form-control"
-                  [(ngModel)]="name" required>
-              </div>
-                <div class="form-group">
+<div>
+  <ng-template #loggedOut>
+    <div class="content">
+      <div class="container registration-form">
+        <div class="row">
+          <div class="col-md-6">
+            <img src="/assets/images/svg/register.svg" alt="Image" class="img-fluid" />
+          </div>
+          <div class="col-md-6">
+            <div class="row justify-content-center">
+              <div class="col-md-8">
+                <div class="mb-4">
+                  <h3>Sign Up</h3>
+                </div>
+                <form #f="ngForm" (ngSubmit)="onRegister()" novalidate>
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" class="form-control" [(ngModel)]="name" required />
+                  </div>
+                  <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" name="username" id="username" class="form-control"
-                    [(ngModel)]="username" required>
-                </div>
-                <div class="form-group">
+                    <input type="text" name="username" id="username" class="form-control" [(ngModel)]="username"
+                      required />
+                  </div>
+                  <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" class="form-control"
-                    [(ngModel)]="password" required>
-                </div>
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="text" name="email" id="email" class="form-control"
-                  [(ngModel)]="email" required>
-              </div>
-                <div class="form-group">
+                    <input type="password" name="password" id="password" class="form-control" [(ngModel)]="password"
+                      required />
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" class="form-control" [(ngModel)]="email" required />
+                  </div>
+                  &nbsp;
+                  <div class="form-group">
                     <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">
-                        <i class="fas fa-sign-in-alt"></i> Create Account</button>
-                </div>
-            </form>
+                      <i class="fas fa-sign-in-alt"></i> Create Account
+                    </button>
+                  </div>
+                  <a routerLink="/login">
+                    <span class="d-block text-left my-4 text-muted">&mdash; or login &mdash;</span>
+                  </a>
+                </form>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</ng-template>
+  </ng-template>
+  &nbsp;
+</div>

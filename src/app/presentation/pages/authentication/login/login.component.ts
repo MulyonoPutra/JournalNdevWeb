@@ -13,7 +13,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
   isLogged = false;
 
   isLoginFail = false;
@@ -25,6 +24,8 @@ export class LoginComponent implements OnInit {
   password!: string;
 
   errorMessage!: string;
+
+  public isLoginFailed = false;
 
   roles: string[] = [];
 
@@ -63,6 +64,7 @@ export class LoginComponent implements OnInit {
         this.autoReload();
       },
       (err) => {
+        this.isLoginFailed = true;
         this.isLogged = false;
         this.errorMessage = err.error.message;
         this.toastr.error(this.errorMessage, 'Failed!', {

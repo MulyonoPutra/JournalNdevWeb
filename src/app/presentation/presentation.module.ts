@@ -1,8 +1,9 @@
-import { MenuComponent } from './pages/menu/menu.component';
+
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { IndexComponent } from './pages/index/index.component';
 import { LoginComponent } from './pages/authentication/login/login.component';
@@ -16,40 +17,50 @@ import { ProdGuardService as guard } from '../core/guards/prod-guard.service';
 import { CategoryComponent } from './pages/category/category.component';
 import { CategoryRepository } from '../core/repository/category.repository';
 import { CategoryServiceImpl } from '../core/service/service-impl/category.service-impl';
+import { PresentationComponent } from './presentation.component';
+import { NavbarComponent } from './pages/components/navbar/navbar.component';
+import { FooterComponent } from './pages/components/footer/footer.component';
 
 const routes: Routes = [
-  { path: '', component: IndexComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
   {
-    path: 'list',
-    component: ProductListComponent,
-    canActivate: [guard],
-    data: { expectedRol: ['admin', 'user'] },
-  },
-  {
-    path: 'details/:id',
-    component: ProductDetailsComponent,
-    canActivate: [guard],
-    data: { expectedRol: ['admin', 'user'] },
-  },
-  {
-    path: 'new',
-    component: ProductNewComponent,
-    canActivate: [guard],
-    data: { expectedRol: ['admin'] },
-  },
-  {
-    path: 'edit/:id',
-    component: ProductEditComponent,
-    canActivate: [guard],
-    data: { expectedRol: ['admin'] },
+    path: '',
+    component: PresentationComponent,
+    children: [
+      { path: '', component: IndexComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+      {
+        path: 'list',
+        component: ProductListComponent,
+        canActivate: [guard],
+        data: { expectedRol: ['admin', 'user'] },
+      },
+      {
+        path: 'details/:id',
+        component: ProductDetailsComponent,
+        canActivate: [guard],
+        data: { expectedRol: ['admin', 'user'] },
+      },
+      {
+        path: 'new',
+        component: ProductNewComponent,
+        canActivate: [guard],
+        data: { expectedRol: ['admin'] },
+      },
+      {
+        path: 'edit/:id',
+        component: ProductEditComponent,
+        canActivate: [guard],
+        data: { expectedRol: ['admin'] },
+      },
+    ],
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({
   declarations: [
+    PresentationComponent,
     IndexComponent,
     LoginComponent,
     RegisterComponent,
@@ -57,12 +68,11 @@ const routes: Routes = [
     ProductDetailsComponent,
     ProductNewComponent,
     ProductEditComponent,
-    MenuComponent,
-    CategoryComponent,
+    CategoryComponent, NavbarComponent, FooterComponent
   ],
   imports: [
     CommonModule,
-    FormsModule,
+    FormsModule,NgxSpinnerModule,
     RouterModule,
     RouterModule.forChild(routes),
   ],

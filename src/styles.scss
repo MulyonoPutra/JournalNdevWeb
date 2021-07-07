@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Seaweed+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Delius&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fresca&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Overpass+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+.font-style {
+  font-family: "Seaweed Script", cursive;
+  //font-family: 'Poppins', sans-serif;
+  font-size: 30px;
+  color: black;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  // font-family: 'Overpass Mono', monospace;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}

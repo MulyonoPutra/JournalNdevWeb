@@ -27,11 +27,12 @@ import { TokenService } from 'src/app/core/service/token.service';
   styleUrls: ['./post-update.component.scss'],
 })
 export class PostUpdateComponent implements OnInit, OnDestroy {
-  isLogged = false;
 
-  isSaving = false;
+  public isLogged = false;
 
-  categoriesSharedCollection: Category[] = [];
+  public isSaving = false;
+
+  public categoriesSharedCollection: Category[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -52,7 +53,6 @@ export class PostUpdateComponent implements OnInit, OnDestroy {
     protected eventManager: EventManager,
     protected elementRef: ElementRef,
     protected activatedRoute: ActivatedRoute,
-    private router: Router
   ) {}
 
   ngOnInit() {
@@ -65,7 +65,6 @@ export class PostUpdateComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.tokenService.logOut();
     window.location.reload();
   }
 

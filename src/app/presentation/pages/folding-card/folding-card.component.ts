@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { CARDS } from 'src/app/core/domain/static/folding-card';
-import { TokenService } from 'src/app/core/service/token.service';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { CardCollection } from 'src/app/core/domain/static/folding-card';
 import { UtilityService } from 'src/app/core/service/utility.service';
 
 @Component({
@@ -8,22 +7,24 @@ import { UtilityService } from 'src/app/core/service/utility.service';
   templateUrl: './folding-card.component.html',
   styleUrls: ['./folding-card.component.scss'],
 })
-export class FoldingCardComponent implements OnInit {
+export class FoldingCardComponent implements OnInit, OnDestroy {
+  
   @Input() content: any;
 
-  @Input() isReadMore: boolean = false;
+  public cards = CardCollection;
 
-  public isCollapsed: boolean = true;
+  public isLogged = false;
 
-  post = CARDS;
+  public username = '';
 
-  isLogged = false;
-
-  username = '';
-
-  constructor(tokenService: TokenService, private utils: UtilityService) {}
+  constructor(private utils: UtilityService) {}
 
   ngOnInit(): void {
     this.utils.setSpinner();
+    this.utils.checkUserToken();
+  }
+
+  ngOnDestroy(): void {
+    window.location.reload();
   }
 }

@@ -4,7 +4,7 @@ export class FoldingCards {
   author?: string;
 }
 
-export const CARDS: FoldingCards[] = [
+export const CardCollection: FoldingCards[] = [
   {
     url: '/assets/images/jpeg/folding-card-1.jpeg',
     title: 'Free Ongkir',

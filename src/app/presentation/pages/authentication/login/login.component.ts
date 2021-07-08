@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+
   isLogged = false;
 
   isLoginFail = false;
@@ -47,6 +48,7 @@ export class LoginComponent implements OnInit {
       this.isLogged = true;
       this.isLoginFail = false;
       this.roles = this.tokenService.getAuthorities();
+      this.router.navigate(['/'])
     }
   }
 

@@ -4,13 +4,26 @@ import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-presentation',
-  templateUrl: './presentation.component.html',
+  template: `
+    <app-navbar></app-navbar>
+    <router-outlet>
+      <ngx-spinner
+        bdColor="rgba(51,51,51,0.8)"
+        size="medium"
+        color="#fff"
+        type="ball-scale-multiple"
+      >
+        <p style="font-size: 20px; color: rgb(255, 255, 255)">Loading...</p>
+      </ngx-spinner>
+    </router-outlet>
+    <app-footer></app-footer>
+  `,
 })
 export class PresentationComponent implements OnInit {
+  
+  public isLogged = false;
 
-  isLogged = false;
-
-  router: any;
+  public router: any;
 
   constructor(
     private tokenService: TokenService,

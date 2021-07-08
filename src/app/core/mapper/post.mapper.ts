@@ -1,4 +1,4 @@
-import { Mapper } from '../base/mapper';
+/* import { Mapper } from '../base/mapper';
 import { PostEntity, Post } from '../domain/entities/post';
 
 export class PostRepositoryMapper extends Mapper<PostEntity, Post> {
@@ -23,3 +23,4 @@ export class PostRepositoryMapper extends Mapper<PostEntity, Post> {
     };
   }
 }
+ */

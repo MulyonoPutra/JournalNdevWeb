@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/core/domain/entities/category';
-import { CategoryRepository } from 'src/app/core/repository/category.repository';
 import { TokenService } from 'src/app/core/service/token.service';
 import { UtilityService } from 'src/app/core/service/utility.service';
+import { Component, OnInit } from '@angular/core';
+import { CategoryRepository } from 'src/app/core/repository/category.repository';
 
 @Component({
   selector: 'app-category',
@@ -10,7 +10,7 @@ import { UtilityService } from 'src/app/core/service/utility.service';
   styleUrls: ['./category.component.scss'],
 })
 export class CategoryComponent implements OnInit {
-  
+
   isLogged = false;
 
   username = '';

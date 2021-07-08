@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { interval, Subscription } from 'rxjs';
 import { TokenService } from '../core/service/token.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -9,11 +7,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
   templateUrl: './presentation.component.html',
 })
 export class PresentationComponent implements OnInit {
+
   isLogged = false;
 
-
-
-  private reload = true;
   router: any;
 
   constructor(
@@ -25,7 +21,6 @@ export class PresentationComponent implements OnInit {
     this.spinner.show();
 
     setTimeout(() => {
-      /** spinner ends after 1 seconds */
       this.spinner.hide();
     }, 1000);
   }
@@ -37,8 +32,6 @@ export class PresentationComponent implements OnInit {
       this.isLogged = false;
     }
   }
-
-
 
   reloadCurrentRoute() {
     let currentUrl = this.router.url;

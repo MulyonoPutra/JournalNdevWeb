@@ -4,13 +4,10 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Search } from '../../domain/dto/search';
 import { Post } from '../../domain/entities/post';
-import { PostRepositoryMapper } from '../../mapper/post.mapper';
 import { PostRepository } from '../../repository/post.repository';
 
 @Injectable()
 export class PostServiceImpl extends PostRepository {
-
-  mapper = new PostRepositoryMapper();
 
   public post: Post;
 
@@ -23,11 +20,14 @@ export class PostServiceImpl extends PostRepository {
   }
 
   addPost(post: Post): Observable<any> {
-    return this.http.post(environment.baseEndpoint + '/v1/post', post);
+    return this.http.post(environment.baseEndpoint + 'api/post', post);
+  }
+
+  updatePost(post: Post): Observable<any> {
+    throw new Error('Method not implemented.');
   }
 
   search(search: Search): Observable<any> {
     throw new Error('Method not implemented.');
   }
-  
 }

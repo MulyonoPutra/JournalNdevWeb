@@ -25,6 +25,9 @@ import { CategoryRepository } from '../core/repository/category.repository';
 import { CategoryServiceImpl } from '../core/service/service-impl/category.service-impl';
 import { ProdGuardService as guard } from '../core/guards/prod-guard.service';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { PostComponent } from './pages/post/post.component';
+import { PostRepository } from '../core/repository/post.repository';
+import { PostServiceImpl } from '../core/service/service-impl/post.service-impl';
 
 const routes: Routes = [
   {
@@ -36,6 +39,7 @@ const routes: Routes = [
       { path: 'register', component: RegisterComponent },
       { path: 'category', component: CategoryComponent },
       { path: 'card', component: FoldingCardComponent },
+      { path: 'post', component: PostComponent },
       {
         path: 'list',
         component: ProductListComponent,
@@ -81,6 +85,7 @@ const routes: Routes = [
     FoldingCardComponent,
     CardsComponent,
     PageNotFoundComponent,
+    PostComponent,
   ],
   imports: [
     CommonModule,
@@ -90,6 +95,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [{ provide: CategoryRepository, useClass: CategoryServiceImpl }],
+  providers: [
+    { provide: CategoryRepository, useClass: CategoryServiceImpl },
+    { provide: PostRepository, useClass: PostServiceImpl },
+  ],
 })
 export class PresentationModule {}

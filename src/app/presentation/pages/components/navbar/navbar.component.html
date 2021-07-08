@@ -13,13 +13,13 @@
             <a class="nav-link" routerLink="/card">Card</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link">About</a>
+          <li class="nav-item" *ngIf="isLogged">
+            <a class="nav-link" routerLink="/post"
+              ><i class="far fa-list-alt"></i> Post</a>
           </li>
           <li class="nav-item" *ngIf="isLogged">
             <a class="nav-link" routerLink="/list"
-              ><i class="far fa-list-alt"></i> List</a
-            >
+              ><i class="far fa-list-alt"></i> List</a>
           </li>
           <li class="nav-item" *ngIf="isLogged">
             <a class="nav-link" routerLink="/category"

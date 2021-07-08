@@ -1,0 +1,25 @@
+<div class="container text-center">
+  <div *ngIf="isLogged; else loggedOut">
+    <div class="column-center">
+      <div class="row">
+        <div class="column">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let post of postData">
+                <td>{{ post.title }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #loggedOut>
+    <app-login></app-login>
+  </ng-template>
+</div>

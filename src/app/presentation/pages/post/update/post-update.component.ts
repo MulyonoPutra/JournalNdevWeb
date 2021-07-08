@@ -1,7 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { finalize, map } from 'rxjs/operators';
 import { AlertError } from 'src/app/core/domain/dto/alert-error';
@@ -19,13 +19,16 @@ import {
   EventWithContent,
 } from 'src/app/core/service/even-manager.service';
 import { CategoryServiceImpl } from 'src/app/core/service/service-impl/category.service-impl';
+import { TokenService } from 'src/app/core/service/token.service';
 
 @Component({
   selector: 'app-post-update',
   templateUrl: './post-update.component.html',
   styleUrls: ['./post-update.component.scss'],
 })
-export class PostUpdateComponent implements OnInit {
+export class PostUpdateComponent implements OnInit, OnDestroy {
+  isLogged = false;
+
   isSaving = false;
 
   categoriesSharedCollection: Category[] = [];
@@ -40,14 +43,16 @@ export class PostUpdateComponent implements OnInit {
   });
 
   constructor(
-    private postService: PostRepository,
-    private categoryService: CategoryRepository,
+    protected postService: PostRepository,
+    protected categoryService: CategoryRepository,
+    protected tokenService: TokenService,
     protected categoryServiceImpl: CategoryServiceImpl,
     protected fb: FormBuilder,
     protected dataUtils: DataUtils,
     protected eventManager: EventManager,
     protected elementRef: ElementRef,
-    protected activatedRoute: ActivatedRoute
+    protected activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -57,6 +62,19 @@ export class PostUpdateComponent implements OnInit {
 
       this.loadRelationshipsOptions();
     });
+  }
+
+  ngOnDestroy() {
+    this.tokenService.logOut();
+    window.location.reload();
+  }
+
+  getUserToken() {
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
   }
 
   byteSize(base64String: string): string {

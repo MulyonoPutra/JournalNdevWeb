@@ -1,8 +1,11 @@
 export interface Category {
-  name: string;
+  id?: number;
+  name?: string;
+}
+export class ICategory implements Category {
+  constructor(public id?: number, public name?: string) {}
 }
 
-export interface CategoryEntity {
-  id: number;
-  name: string;
+export function getCategoryIdentifier(category: ICategory): number | undefined {
+  return category.id;
 }

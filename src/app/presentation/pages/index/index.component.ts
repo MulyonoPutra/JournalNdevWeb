@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from 'src/app/core/domain/entities/category';
-import { CategoryRepository } from 'src/app/core/repository/category.repository';
 import { TokenService } from '../../../core/service/token.service';
-import { UtilityService } from 'src/app/core/service/utility.service';
+import { UtilityService } from 'src/app/core/service/utils/utility.service';
+import { Post } from 'src/app/core/domain/entities/post';
+import { PostRepository } from 'src/app/core/repository/post.repository';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-index',
@@ -10,24 +11,27 @@ import { UtilityService } from 'src/app/core/service/utility.service';
   styleUrls: ['./index.component.scss'],
 })
 export class IndexComponent implements OnInit {
+  
   isLogged = false;
 
   username = '';
 
-  categories: Array<Category>;
+  posts: Array<Post>;
+
+  public postObject: Post;
 
   constructor(
     private tokenService: TokenService,
-    private categoryService: CategoryRepository,
-    private utils: UtilityService
+    private postService: PostRepository,
+    private utils: UtilityService,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.getUserToken();
-    this.findAllCategory();
+    this.findAllPost();
     this.utils.setSpinner();
   }
-
 
   getUserToken(): void {
     if (this.tokenService.getToken()) {
@@ -39,10 +43,16 @@ export class IndexComponent implements OnInit {
     }
   }
 
-  findAllCategory() {
-    this.categories = [];
-    this.categoryService.getAllCategory().subscribe((value: Category[]) => {
-      this.categories = value;
+  findAllPost() {
+    this.posts = [];
+    this.postService.getAllPost().subscribe((value: Post[]) => {
+      this.posts = value;
+      console.log(value);
     });
+  }
+
+  gotoDetail(post: any) {
+    this.postObject = post;
+    this.router.navigateByUrl('/post-details/' + post.id);
   }
 }

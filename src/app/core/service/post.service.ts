@@ -9,7 +9,6 @@ import { PostRepository } from '../repository/post.repository';
 export type EntityArrayResponseType = HttpResponse<Category[]>;
 @Injectable()
 export class PostService extends PostRepository {
-
   constructor(private postRepository: PostRepository) {
     super();
   }
@@ -20,6 +19,10 @@ export class PostService extends PostRepository {
     return this.postRepository.addPost(post);
   }
 
+  getPostById(id: number): Observable<any> {
+    return this.postRepository.getPostById(id);
+  }
+
   updatePost(post: Post): Observable<any> {
     return this.postRepository.updatePost(post);
   }
@@ -27,5 +30,4 @@ export class PostService extends PostRepository {
   search(search: Search): Observable<any> {
     return this.postRepository.search(search);
   }
-  
 }

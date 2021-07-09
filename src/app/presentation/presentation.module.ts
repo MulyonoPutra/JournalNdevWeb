@@ -9,7 +9,7 @@ import { IndexComponent } from './pages/index/index.component';
 import { LoginComponent } from './pages/authentication/login/login.component';
 import { NavbarComponent } from './pages/components/navbar/navbar.component';
 import { FooterComponent } from './pages/components/footer/footer.component';
-import { CategoryComponent } from './pages/category/category.component';
+import { CategoryComponent } from './pages/category/list/category.component';
 import { RegisterComponent } from './pages/authentication/register/register.component';
 import { ProductNewComponent } from './pages/product/product-new/product-new.component';
 import { ProductListComponent } from './pages/product/product-list/product-list.component';
@@ -33,6 +33,8 @@ import { FoldingCardDetailsComponent } from './pages/folding-card/details/foldin
 import { FoldingCardUpdateComponent } from './pages/folding-card/update/folding-card-update.component';
 import { CardsRepository } from '../core/repository/cards.repository';
 import { CardsServiceImpl } from '../core/service/service-impl/cards.service-impl';
+import { CategoryUpdateComponent } from './pages/category/update/category-update.component';
+import { CategoryDetailsComponent } from './pages/category/details/category-details.component';
 
 const routes: Routes = [
   {
@@ -43,12 +45,12 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'category', component: CategoryComponent },
+      { path: 'category-update', component: CategoryUpdateComponent },
+
       { path: 'card', component: FoldingCardComponent },
       { path: 'card-new', component: FoldingCardUpdateComponent },
-      {
-        path: 'post',
-        component: PostComponent,
-      },
+
+      { path: 'post', component: PostComponent },
       { path: 'new', component: PostUpdateComponent },
       { path: 'details', component: PostDetailsComponent },
       {
@@ -100,6 +102,8 @@ const routes: Routes = [
     FoldingCardComponent,
     FoldingCardDetailsComponent,
     FoldingCardUpdateComponent,
+    CategoryUpdateComponent,
+    CategoryDetailsComponent,
   ],
   imports: [
     CommonModule,

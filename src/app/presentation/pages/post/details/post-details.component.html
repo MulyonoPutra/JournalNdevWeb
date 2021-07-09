@@ -1,6 +1,14 @@
 <div class="container" *ngIf="post">
-  <h2>{{ post.title }}</h2>
-  <div>{{post.content}}</div>
+  <div class="text-center">
+    <img
+      [src]="'data:' + post.imagesContentType + ';base64,' + post.images"
+      class="card-img-top"
+      style="height: 450px; width: 500px"
+    />
+  </div>
   <br>
+  <h2>{{ post.title }}</h2>
+  <p>{{ post.content }}</p>
+  <br />
   <button class="btn btn-primary" (click)="goBack()">go back</button>
 </div>

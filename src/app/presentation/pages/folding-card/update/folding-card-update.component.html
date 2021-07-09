@@ -1,0 +1,90 @@
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      Add Folding Card
+    </div>
+    <div class="card-body">
+       <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-8">
+            <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+              <div>
+                <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+                  <label class="form-control-label" for="field_id">ID</label>
+                  <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id"
+                    [readonly]="true" />
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label" for="field_title">Title</label>
+                  <input type="text" class="form-control" name="title" id="field_title" data-cy="title"
+                    formControlName="title" />
+                  <div *ngIf="
+                      editForm.get('title')!.invalid &&
+                      (editForm.get('title')!.dirty ||
+                        editForm.get('title')!.touched)
+                    ">
+                    <small class="form-text text-danger" *ngIf="editForm.get('title')?.errors?.required">
+                      This field is required.
+                    </small>
+                  </div>
+                </div>
+                &nbsp;
+                <div class="form-group">
+                  <label class="form-control-label" for="field_images">Images</label>
+                  <div>
+                    <img [src]="
+                        'data:' +
+                        editForm.get('imagesContentType')!.value +
+                        ';base64,' +
+                        editForm.get('images')!.value
+                      " style="max-height: 100px" *ngIf="editForm.get('images')!.value" alt="post image" />
+                    <div *ngIf="editForm.get('images')!.value" class="form-text text-danger clearfix">
+                      <span class="pull-left">{{ editForm.get("imagesContentType")!.value }},
+                        {{ byteSize(editForm.get("images")!.value) }}</span>
+                        &nbsp;
+                          <img src="/assets/images/svg/close.svg" class="social-size" alt=""(click)="
+                          clearInputImage(
+                            'images',
+                            'imagesContentType',
+                            'file_images'
+                          )
+                        " >
+                    </div>
+                    <input type="file" id="file_images" data-cy="images" (change)="setFileData($event, 'images', true)"
+                      accept="image/*" />
+                  </div>
+                  <input type="hidden" class="form-control" name="images" id="field_images" data-cy="images"
+                    formControlName="images" />
+                  <input type="hidden" class="form-control" name="imagesContentType" id="field_imagesContentType"
+                    formControlName="imagesContentType" />
+                  <div *ngIf="
+                      editForm.get('images')!.invalid &&
+                      (editForm.get('images')!.dirty ||
+                        editForm.get('images')!.touched)
+                    ">
+                    <small class="form-text text-danger" *ngIf="editForm.get('images')?.errors?.required">
+                      This field is required.
+                    </small>
+                  </div>
+                </div>
+                &nbsp;
+              </div>
+              &nbsp;
+              <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                  <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                &nbsp;
+                <button type="submit" id="save-entity" data-cy="entityCreateSaveButton"
+                  [disabled]="editForm.invalid || isSaving" class="btn btn-primary ml-3">
+                  <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

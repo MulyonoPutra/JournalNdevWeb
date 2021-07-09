@@ -6,6 +6,7 @@ import { TokenService } from './token.service';
   providedIn: 'root',
 })
 export class UtilityService {
+  
   isLogged = false;
 
   constructor(
@@ -18,7 +19,7 @@ export class UtilityService {
     this.spinner.show();
     setTimeout(() => {
       this.spinner.hide();
-    }, 1000);
+    }, 500);
   }
 
   checkUserToken() {

@@ -28,7 +28,7 @@ export class CategoryService extends CategoryRepository {
     return this.categoryRepository.query();
   }
 
-  addCategoryToCollectionIfMissing(categoryCollection: Category[],categoriesToCheck: (Category | null | undefined)[]):
+  addCategoryToCollectionIfMissing(categoryCollection: Category[], categoriesToCheck: (Category | null | undefined)[]):
   Observable<Category[]> {
     return this.addCategoryToCollectionIfMissing(
       categoryCollection,

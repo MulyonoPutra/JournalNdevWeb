@@ -10,7 +10,7 @@ import { Register } from '../domain/dto/register';
   providedIn: 'root',
 })
 export class AuthService {
-  
+
   constructor(private httpClient: HttpClient) {}
 
   public new(register: Register): Observable<any> {
@@ -26,4 +26,5 @@ export class AuthService {
       loginDto
     );
   }
+  
 }

@@ -5,6 +5,7 @@ import { AuthConstants } from '../constants/auth.constants';
   providedIn: 'root',
 })
 export class TokenService {
+  
   roles: Array<string> = [];
 
   constructor() {}

@@ -27,7 +27,7 @@ import { TokenService } from 'src/app/core/service/token.service';
   styleUrls: ['./post-update.component.scss'],
 })
 export class PostUpdateComponent implements OnInit, OnDestroy {
-
+  
   public isLogged = false;
 
   public isSaving = false;
@@ -52,10 +52,10 @@ export class PostUpdateComponent implements OnInit, OnDestroy {
     protected dataUtils: DataUtils,
     protected eventManager: EventManager,
     protected elementRef: ElementRef,
-    protected activatedRoute: ActivatedRoute,
+    protected activatedRoute: ActivatedRoute
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadRelationshipsOptions();
     this.activatedRoute.data.subscribe(({ post }) => {
       this.updateForm(post);
@@ -64,11 +64,11 @@ export class PostUpdateComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     window.location.reload();
   }
 
-  getUserToken() {
+  getUserToken(): void {
     if (this.tokenService.getToken()) {
       this.isLogged = true;
     } else {

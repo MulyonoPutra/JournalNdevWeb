@@ -4,11 +4,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 /* Components */
 import { IndexComponent } from './pages/index/index.component';
 import { LoginComponent } from './pages/authentication/login/login.component';
-import { CardsComponent } from './pages/components/cards/cards.component';
 import { NavbarComponent } from './pages/components/navbar/navbar.component';
 import { FooterComponent } from './pages/components/footer/footer.component';
 import { CategoryComponent } from './pages/category/category.component';
@@ -16,7 +14,7 @@ import { RegisterComponent } from './pages/authentication/register/register.comp
 import { ProductNewComponent } from './pages/product/product-new/product-new.component';
 import { ProductListComponent } from './pages/product/product-list/product-list.component';
 import { ProductEditComponent } from './pages/product/product-edit/product-edit.component';
-import { FoldingCardComponent } from './pages/folding-card/folding-card.component';
+import { FoldingCardComponent } from './pages/folding-card/list/folding-card.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { PresentationComponent } from './presentation.component';
 import { ProductDetailsComponent } from './pages/product/product-details/product-details.component';
@@ -31,6 +29,10 @@ import { CategoryServiceImpl } from '../core/service/service-impl/category.servi
 import { ProdGuardService as guard } from '../core/guards/prod-guard.service';
 import { PostDetailsComponent } from './pages/post/details/post-details.component';
 import { PostUpdateComponent } from './pages/post/update/post-update.component';
+import { FoldingCardDetailsComponent } from './pages/folding-card/details/folding-card-details.component';
+import { FoldingCardUpdateComponent } from './pages/folding-card/update/folding-card-update.component';
+import { CardsRepository } from '../core/repository/cards.repository';
+import { CardsServiceImpl } from '../core/service/service-impl/cards.service-impl';
 
 const routes: Routes = [
   {
@@ -42,6 +44,7 @@ const routes: Routes = [
       { path: 'register', component: RegisterComponent },
       { path: 'category', component: CategoryComponent },
       { path: 'card', component: FoldingCardComponent },
+      { path: 'card-new', component: FoldingCardUpdateComponent },
       {
         path: 'post',
         component: PostComponent,
@@ -90,12 +93,13 @@ const routes: Routes = [
     CategoryComponent,
     NavbarComponent,
     FooterComponent,
-    FoldingCardComponent,
-    CardsComponent,
     PageNotFoundComponent,
     PostComponent,
     PostDetailsComponent,
     PostUpdateComponent,
+    FoldingCardComponent,
+    FoldingCardDetailsComponent,
+    FoldingCardUpdateComponent,
   ],
   imports: [
     CommonModule,
@@ -110,6 +114,7 @@ const routes: Routes = [
     { provide: CategoryRepository, useClass: CategoryServiceImpl },
     { provide: PostRepository, useClass: PostServiceImpl },
     { provide: CategoryServiceImpl },
+    { provide: CardsRepository, useClass: CardsServiceImpl },
   ],
 })
 export class PresentationModule {}

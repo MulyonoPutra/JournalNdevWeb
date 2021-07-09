@@ -29,7 +29,7 @@ export class CategoryServiceImpl extends CategoryRepository {
 
   addCategory(categories: Category): Observable<any> {
     return this.http.post(
-      environment.baseEndpoint + '/v1/category',
+      environment.baseEndpoint + 'api/category',
       categories
     );
   }

@@ -1,44 +1,68 @@
-
 <div class="container">
-  <div class="card">
-    <div class="card-header">
-      Add Category
-    </div>
+  <div class="card justify-content-center" >
+    <div class="card-header">Add Category</div>
     <div class="card-body">
-       <div class="container">
-        <div class="row justify-content-center">
+      <div class="container">
+        <div class="row justify-content-center" style="margin-left: 200px; margin: right 200px;">
           <div class="col-8">
-            <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <form
+              name="editForm"
+              role="form"
+              novalidate
+              (ngSubmit)="save()"
+              [formGroup]="editForm"
+            >
               <div>
-                <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+                <div
+                  class="form-group"
+                  [hidden]="editForm.get('id')!.value == null"
+                >
                   <label class="form-control-label" for="field_id">ID</label>
-                  <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id"
-                    [readonly]="true" />
+                  <input
+                    matInput
+                    type="number"
+                    class="form-control"
+                    name="id"
+                    id="field_id"
+                    data-cy="id"
+                    formControlName="id"
+                    [readonly]="true"
+                  />
                 </div>
                 <div class="form-group">
-                  <label class="form-control-label" for="field_title">Category Name</label>
-                  <input type="text" class="form-control" name="name" id="field_name" data-cy="name"
-                    formControlName="name" />
-                  <div *ngIf="
-                      editForm.get('name')!.invalid &&
-                      (editForm.get('name')!.dirty ||
-                        editForm.get('name')!.touched)
-                    ">
-                    <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required">
-                      This field is required.
-                    </small>
-                  </div>
+                  <mat-form-field appearance="outline" style="width: 520px">
+                    <mat-label class="form-control-label" for="field_title"
+                      >Category Name</mat-label
+                    >
+                    <input
+                      matInput
+                      type="text"
+                      name="name"
+                      id="field_name"
+                      data-cy="name"
+                      formControlName="name"
+                    />
+                  </mat-form-field>
                 </div>
-                &nbsp;
               </div>
               &nbsp;
               <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                <button
+                  type="button"
+                  id="cancel-save"
+                  class="btn btn-secondary"
+                  (click)="previousState()"
+                >
                   <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
                 </button>
                 &nbsp;
-                <button type="submit" id="save-entity" data-cy="entityCreateSaveButton"
-                  [disabled]="editForm.invalid || isSaving" class="btn btn-primary ml-3">
+                <button
+                  type="submit"
+                  id="save-entity"
+                  data-cy="entityCreateSaveButton"
+                  [disabled]="editForm.invalid || isSaving"
+                  class="btn btn-primary ml-3"
+                >
                   <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
                 </button>
               </div>

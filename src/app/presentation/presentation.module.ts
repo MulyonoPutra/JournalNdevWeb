@@ -35,6 +35,8 @@ import { CardsRepository } from '../core/repository/cards.repository';
 import { CardsServiceImpl } from '../core/service/service-impl/cards.service-impl';
 import { CategoryUpdateComponent } from './pages/category/update/category-update.component';
 import { CategoryDetailsComponent } from './pages/category/details/category-details.component';
+import { MaterialModule } from '../core/utility/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 const routes: Routes = [
   {
@@ -108,8 +110,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    MaterialModule,
     NgxSpinnerModule,
-    RouterModule,
+    RouterModule,MatFormFieldModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
   ],

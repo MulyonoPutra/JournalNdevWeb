@@ -10,6 +10,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 /* external */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { MaterialModule } from './core/utility/material';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot(),
     HttpClientModule,
     FormsModule,
+    MaterialModule,
   ],
 
   providers: [interceptorProvider],

@@ -5,38 +5,39 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /* Components */
+import { PostComponent } from './pages/post/list/post.component';
 import { IndexComponent } from './pages/index/index.component';
 import { LoginComponent } from './pages/authentication/login/login.component';
 import { NavbarComponent } from './pages/components/navbar/navbar.component';
 import { FooterComponent } from './pages/components/footer/footer.component';
 import { CategoryComponent } from './pages/category/list/category.component';
 import { RegisterComponent } from './pages/authentication/register/register.component';
+import { PostUpdateComponent } from './pages/post/update/post-update.component';
 import { ProductNewComponent } from './pages/product/product-new/product-new.component';
 import { ProductListComponent } from './pages/product/product-list/product-list.component';
 import { ProductEditComponent } from './pages/product/product-edit/product-edit.component';
 import { FoldingCardComponent } from './pages/folding-card/list/folding-card.component';
+import { PostDetailsComponent } from './pages/post/details/post-details.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { PresentationComponent } from './presentation.component';
+import { CategoryUpdateComponent } from './pages/category/update/category-update.component';
 import { ProductDetailsComponent } from './pages/product/product-details/product-details.component';
+import { CategoryDetailsComponent } from './pages/category/details/category-details.component';
+import { FoldingCardUpdateComponent } from './pages/folding-card/update/folding-card-update.component';
+import { FoldingCardDetailsComponent } from './pages/folding-card/details/folding-card-details.component';
 
 /* Others */
-import { PostComponent } from './pages/post/list/post.component';
-import { PostRepository } from '../core/repository/post.repository';
-import { PostServiceImpl } from '../core/service/service-impl/post.service-impl';
-import { NgxSpinnerModule } from 'ngx-spinner';
-import { CategoryRepository } from '../core/repository/category.repository';
-import { CategoryServiceImpl } from '../core/service/service-impl/category.service-impl';
-import { ProdGuardService as guard } from '../core/guards/prod-guard.service';
-import { PostDetailsComponent } from './pages/post/details/post-details.component';
-import { PostUpdateComponent } from './pages/post/update/post-update.component';
-import { FoldingCardDetailsComponent } from './pages/folding-card/details/folding-card-details.component';
-import { FoldingCardUpdateComponent } from './pages/folding-card/update/folding-card-update.component';
-import { CardsRepository } from '../core/repository/cards.repository';
-import { CardsServiceImpl } from '../core/service/service-impl/cards.service-impl';
-import { CategoryUpdateComponent } from './pages/category/update/category-update.component';
-import { CategoryDetailsComponent } from './pages/category/details/category-details.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
 import { MaterialModule } from '../core/utility/material';
+import { PostRepository } from '../core/repository/post.repository';
+import { CardsRepository } from '../core/repository/cards.repository';
+import { PostServiceImpl } from '../core/service/impl/post.service-impl';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { CardsServiceImpl } from '../core/service/impl/cards.service-impl';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { CategoryRepository } from '../core/repository/category.repository';
+import { CategoryServiceImpl } from '../core/service/impl/category.service-impl';
+import { ProdGuardService as guard } from '../core/guards/prod-guard.service';
 
 const routes: Routes = [
   {
@@ -54,7 +55,7 @@ const routes: Routes = [
 
       { path: 'post', component: PostComponent },
       { path: 'new', component: PostUpdateComponent },
-      { path: 'details', component: PostDetailsComponent },
+      { path: 'post-details/:id', component: PostDetailsComponent },
       {
         path: 'list',
         component: ProductListComponent,
@@ -67,12 +68,6 @@ const routes: Routes = [
         canActivate: [guard],
         data: { expectedRol: ['admin', 'user'] },
       },
-      /* {
-        path: 'new',
-        component: ProductNewComponent,
-        canActivate: [guard],
-        data: { expectedRol: ['admin'] },
-      }, */
       {
         path: 'edit/:id',
         component: ProductEditComponent,
@@ -112,16 +107,18 @@ const routes: Routes = [
     FormsModule,
     MaterialModule,
     NgxSpinnerModule,
-    RouterModule,MatFormFieldModule,
+    RouterModule,
+    MatFormFieldModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
+    EditorModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
-    { provide: CategoryRepository, useClass: CategoryServiceImpl },
-    { provide: PostRepository, useClass: PostServiceImpl },
     { provide: CategoryServiceImpl },
+    { provide: PostRepository, useClass: PostServiceImpl },
     { provide: CardsRepository, useClass: CardsServiceImpl },
+    { provide: CategoryRepository, useClass: CategoryServiceImpl },
   ],
 })
 export class PresentationModule {}

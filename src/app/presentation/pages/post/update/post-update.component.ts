@@ -13,12 +13,12 @@ import { PostRepository } from 'src/app/core/repository/post.repository';
 import {
   DataUtils,
   FileLoadError,
-} from 'src/app/core/service/data-utils.service';
+} from 'src/app/core/service/utils/data-utils.service';
 import {
   EventManager,
   EventWithContent,
-} from 'src/app/core/service/even-manager.service';
-import { CategoryServiceImpl } from 'src/app/core/service/service-impl/category.service-impl';
+} from 'src/app/core/service/utils/even-manager.service';
+import { CategoryServiceImpl } from 'src/app/core/service/impl/category.service-impl';
 import { TokenService } from 'src/app/core/service/token.service';
 
 @Component({
@@ -27,7 +27,6 @@ import { TokenService } from 'src/app/core/service/token.service';
   styleUrls: ['./post-update.component.scss'],
 })
 export class PostUpdateComponent implements OnInit, OnDestroy {
-  
   public isLogged = false;
 
   public isSaving = false;
@@ -38,6 +37,7 @@ export class PostUpdateComponent implements OnInit, OnDestroy {
     id: [],
     title: [null, [Validators.required]],
     content: [null, [Validators.required]],
+    author: [null, [Validators.required]],
     images: [null, [Validators.required]],
     imagesContentType: [],
     category_post: [],
@@ -156,6 +156,7 @@ export class PostUpdateComponent implements OnInit, OnDestroy {
       id: post.id,
       title: post.title,
       content: post.content,
+      author: post.author,
       images: post.images,
       imagesContentType: post.imagesContentType,
       category_post: post.category_post,
@@ -174,6 +175,7 @@ export class PostUpdateComponent implements OnInit, OnDestroy {
       id: this.editForm.get(['id'])!.value,
       title: this.editForm.get(['title'])!.value,
       content: this.editForm.get(['content'])!.value,
+      author: this.editForm.get(['author'])!.value,
       imagesContentType: this.editForm.get(['imagesContentType'])!.value,
       images: this.editForm.get(['images'])!.value,
       category_post: this.editForm.get(['category_post'])!.value,

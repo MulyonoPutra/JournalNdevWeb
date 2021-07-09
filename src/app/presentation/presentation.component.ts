@@ -20,7 +20,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
   `,
 })
 export class PresentationComponent implements OnInit {
-  
   public isLogged = false;
 
   public router: any;

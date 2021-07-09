@@ -10,11 +10,11 @@ import { CardsRepository } from 'src/app/core/repository/cards.repository';
 import {
   DataUtils,
   FileLoadError,
-} from 'src/app/core/service/data-utils.service';
+} from 'src/app/core/service/utils/data-utils.service';
 import {
   EventManager,
   EventWithContent,
-} from 'src/app/core/service/even-manager.service';
+} from 'src/app/core/service/utils/even-manager.service';
 import { TokenService } from 'src/app/core/service/token.service';
 
 @Component({
@@ -23,7 +23,7 @@ import { TokenService } from 'src/app/core/service/token.service';
   styleUrls: ['./folding-card-update.component.scss'],
 })
 export class FoldingCardUpdateComponent implements OnInit, OnDestroy {
-  
+
   public isLogged = false;
 
   public isSaving = false;

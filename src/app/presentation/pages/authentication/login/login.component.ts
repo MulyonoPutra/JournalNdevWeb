@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Login } from 'src/app/core/domain/dto/login';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { TokenService } from 'src/app/core/service/token.service';
-import { UtilityService } from 'src/app/core/service/utility.service';
+import { UtilityService } from 'src/app/core/service/utils/utility.service';
 import Swal from 'sweetalert2';
 
 @Component({

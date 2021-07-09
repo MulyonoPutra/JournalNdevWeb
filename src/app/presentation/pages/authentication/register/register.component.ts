@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { TokenService } from 'src/app/core/service/token.service';
-import { UtilityService } from 'src/app/core/service/utility.service';
+import { UtilityService } from 'src/app/core/service/utils/utility.service';
 
 @Component({
   selector: 'app-register',

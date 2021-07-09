@@ -6,8 +6,8 @@ import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { DataUtils } from 'src/app/core/service/data-utils.service';
-import { EventManager } from 'src/app/core/service/even-manager.service';
+import { DataUtils } from 'src/app/core/service/utils/data-utils.service';
+import { EventManager } from 'src/app/core/service/utils/even-manager.service';
 import { TokenService } from 'src/app/core/service/token.service';
 
 @Component({

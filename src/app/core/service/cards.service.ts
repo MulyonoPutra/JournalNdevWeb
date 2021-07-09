@@ -28,4 +28,5 @@ export class CardsService extends CardsRepository {
   query(): Observable<EntityArrayResponseType> {
     throw new Error('Method not implemented.');
   }
+  
 }

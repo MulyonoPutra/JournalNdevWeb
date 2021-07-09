@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/core/domain/entities/post';
 import { PostRepository } from 'src/app/core/repository/post.repository';
 import { TokenService } from 'src/app/core/service/token.service';
-import { UtilityService } from 'src/app/core/service/utility.service';
+import { UtilityService } from 'src/app/core/service/utils/utility.service';
 
 @Component({
   selector: 'app-post',

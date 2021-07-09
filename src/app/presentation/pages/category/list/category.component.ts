@@ -1,6 +1,6 @@
 import { Category } from 'src/app/core/domain/entities/category';
 import { TokenService } from 'src/app/core/service/token.service';
-import { UtilityService } from 'src/app/core/service/utility.service';
+import { UtilityService } from 'src/app/core/service/utils/utility.service';
 import { Component, OnInit } from '@angular/core';
 import { CategoryRepository } from 'src/app/core/repository/category.repository';
 

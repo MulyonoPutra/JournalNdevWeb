@@ -3,7 +3,7 @@ import { Cards } from 'src/app/core/domain/entities/cards';
 import { CardCollection } from 'src/app/core/domain/static/folding-card';
 import { CardsRepository } from 'src/app/core/repository/cards.repository';
 import { TokenService } from 'src/app/core/service/token.service';
-import { UtilityService } from 'src/app/core/service/utility.service';
+import { UtilityService } from 'src/app/core/service/utils/utility.service';
 
 @Component({
   selector: 'app-folding-card',

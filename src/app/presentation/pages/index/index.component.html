@@ -20,7 +20,7 @@
               <div class="card-body">
                 <h5 class="card-title">{{ post?.title }}</h5>
                 <p>{{ post.category_post?.name }} </p>
-                <p class="text">{{ post?.content }} </p>
+                <p class="text" [innerHTML]="post.content"> </p>
               </div>
               <div class="card-footer">
                 <div class="d-flex bd-highlight mb-3">

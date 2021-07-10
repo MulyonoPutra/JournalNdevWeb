@@ -5,7 +5,7 @@
         <a class="font-style" routerLink="/"> JOURNAL NDEP </a>
       </div>
       <div class="d-flex justify-content-center">
-        <div class="input-group mb-3">
+        <div class="input-group mb-3" *ngIf="isLogged">
           <input
             type="text"
             class="form-control"
@@ -74,14 +74,14 @@
           <ul class="navbar-nav row">
             <li class="nav-item col">
               <img
-                src="/assets/images/png/instagram-sm.png"
+                src="/assets/images/png/instagram.png"
                 alt="instagram"
                 class="social-icon"
               />
             </li>
             <li class="nav-item col" *ngIf="isLogged">
               <img
-                src="/assets/images/png/facebook-sm.png"
+                src="/assets/images/png/facebook.png"
                 alt="facebook"
                 class="social-icon"
               />
@@ -89,15 +89,8 @@
 
             <li class="nav-item col" *ngIf="isLogged">
               <img
-                src="/assets/images/png/twitter-sm.png"
+                src="/assets/images/png/twitter.png"
                 alt="twitter"
-                class="social-icon"
-              />
-            </li>
-            <li class="nav-item col" *ngIf="isLogged">
-              <img
-                src="/assets/images/png/youtube-sm.png"
-                alt="youtube"
                 class="social-icon"
               />
             </li>

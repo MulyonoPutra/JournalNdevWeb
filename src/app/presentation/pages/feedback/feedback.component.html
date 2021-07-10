@@ -1,0 +1,79 @@
+<div>
+  <div class="content mt-5">
+    <div class="container registration-form">
+      <div class="row">
+        <div class="col-md-6">
+          <img
+            src="/assets/images/svg/feedback.svg"
+            alt="Image"
+            class="img-fluid"
+          />
+        </div>
+        <div class="col-md-6">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="mb-4">
+                <h3>We Want Your Feedback</h3>
+                <p class="mb-4">
+                  We want your feedback for improve our website. Please send messages to us.
+                </p>
+              </div>
+              <form name="form" #f="ngForm" novalidate>
+                <div class="form-group">
+                  <mat-form-field appearance="outline" style="width: 420px">
+                    <mat-label class="form-control-label" for="field_title"
+                      >Username</mat-label
+                    >
+                    <input
+                      matInput
+                      type="text"
+                      name="username"
+                      id="username"
+                      data-cy="username"
+                      required
+                    />
+                  </mat-form-field>
+                </div>
+                <div class="form-group">
+                  <mat-form-field appearance="outline" style="width: 420px">
+                    <mat-label class="form-control-label" for="email"
+                      >Email</mat-label
+                    >
+                    <input
+                      matInput
+                      type="text"
+                      name="email"
+                      id="email"
+                      data-cy="email"
+                      required
+                    />
+                  </mat-form-field>
+                </div>
+                <div class="form-group">
+                  <mat-form-field appearance="outline" style="width: 420px">
+                    <mat-label class="form-control-label" for="messages"
+                      >Messages</mat-label
+                    >
+                    <input
+                      matInput
+                      type="text"
+                      name="messages"
+                      id="messages"
+                      data-cy="messages"
+                      required
+                    />
+                  </mat-form-field>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary" [disabled]="!f.valid">
+                    Send Messages
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

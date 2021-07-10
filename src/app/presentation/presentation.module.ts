@@ -38,6 +38,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { CategoryRepository } from '../core/repository/category.repository';
 import { CategoryServiceImpl } from '../core/service/impl/category.service-impl';
 import { ProdGuardService as guard } from '../core/guards/prod-guard.service';
+import { FeedbackComponent } from './pages/feedback/feedback.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,8 @@ const routes: Routes = [
       { path: 'post', component: PostComponent },
       { path: 'new', component: PostUpdateComponent },
       { path: 'post-details/:id', component: PostDetailsComponent },
+
+      { path: 'feedback', component: FeedbackComponent },
       {
         path: 'list',
         component: ProductListComponent,
@@ -101,6 +104,7 @@ const routes: Routes = [
     FoldingCardUpdateComponent,
     CategoryUpdateComponent,
     CategoryDetailsComponent,
+    FeedbackComponent,
   ],
   imports: [
     CommonModule,

@@ -1,28 +1,40 @@
-<div class="container text-center">
-  <div *ngIf="isLogged; else loggedOut">
-    <div class="column-center">
+<div class="container">
+      <div class="container" class="pull-left readMore">
       <div class="row">
-        <div class="column">
           <a routerLink="/new">
-            <button class="btn btn-primary">Create</button>
+            <button class="btn btn-primary">New Post</button>
           </a>
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let post of postData">
-                <td>{{ post.title }}</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="mt-3 col-md-3 position-relative" *ngFor="let post of posts">
+          <div class="card box" style="width: 21rem" data-aos="zoom-in">
+            <img
+              [src]="'data:' + post.imagesContentType + ';base64,' +
+              post.images"
+              class="card-img-top"
+              />
+            <div class="card-body">
+              <h5 class="card-title">{{ post?.title }}</h5>
+              <p>{{ post.category_post?.name }}</p>
+              <p class="text" [innerHTML]="post.content"></p>
+              <a style="color: #fd0dfd;" (click)="gotoDetail(post)">
+                <p>Read More..</p>
+              </a>
+            </div>
+            <div class="card-footer">
+              <div class="d-flex bd-highlight mb-3">
+                <div class="font-size me-auto p-2 bd-highlight">
+                  <!-- {{ post?.createdDate | date: "short" }} -->
+                  {{ calculateDiff(post) }} {{ hourTime(post) }}
+                </div>
+                <div class="font-size p-2 bd-highlight"></div>
+                <div class="font-size p-2 bd-highlight">
+                  {{ post?.author }}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <div class="col-md-3"></div>
       </div>
     </div>
-  </div>
-  <ng-template #loggedOut>
-    <app-login></app-login>
-  </ng-template>
+
 </div>

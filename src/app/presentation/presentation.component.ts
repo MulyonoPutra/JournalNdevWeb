@@ -6,7 +6,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   selector: 'app-presentation',
   template: `
     <app-navbar></app-navbar>
-    <router-outlet>
+    <router-outlet class="main-wrapper">
       <ngx-spinner
         bdColor="rgba(51,51,51,0.8)"
         size="medium"
@@ -16,9 +16,24 @@ import { NgxSpinnerService } from 'ngx-spinner';
         <p style="font-size: 20px; color: rgb(255, 255, 255)">Loading...</p>
       </ngx-spinner>
     </router-outlet>
-    <app-footer></app-footer>
+    <app-footer class="fixed-footer"></app-footer>
   `,
+  styles: [
+      `
+        .fixed-footer {
+          width: 100%;
+          bottom: -25%;
+          position: relative;
+          margin-top: -50px;
+        }
+        .main-wrapper {
+          display: flex;
+          flex-direction: column;
+        }
+      `
+    ]
 })
+
 export class PresentationComponent implements OnInit {
   public isLogged = false;
 
@@ -53,13 +68,4 @@ export class PresentationComponent implements OnInit {
     });
   }
 
-  onLogOut(): void {
-    this.tokenService.logOut();
-    window.location.reload();
-  }
-
-  hideButton() {
-    if (this.isLogged == true) {
-    }
-  }
 }

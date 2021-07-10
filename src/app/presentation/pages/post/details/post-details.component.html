@@ -1,14 +1,21 @@
 <div class="container" *ngIf="post">
-  <div class="text-center">
+  <div class="justify-content-start mt-5">
+    <h2 >{{ post.title }}</h2>
+    <p style="color: #fd0dfd;">{{post.category_post?.name}}</p>
+  </div>
+  <div class="text-center mt-5">
     <img
       [src]="'data:' + post.imagesContentType + ';base64,' + post.images"
       class="card-img-top"
-      style="height: 450px; width: 500px"
+      style="height: 550px; width: 800px"
     />
   </div>
-  <br>
-  <h2>{{ post.title }}</h2>
-  <p [innerHTML]="post.content"></p>
   <br />
-  <button class="btn btn-primary" (click)="goBack()">go back</button>
+  <div class="container">
+    <p [innerHTML]="post.content" style="
+
+  margin-right: 200px;
+  margin-left: 190px;"></p>
+  </div>
+  <br />
 </div>

@@ -16,7 +16,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-line-clamp: 3; /* number of lines to show */
   -webkit-box-orient: vertical;
 }
 
@@ -39,5 +39,8 @@
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid #dc354500;
-  border-radius: 50%;
+}
+
+.card-img-top {
+  border-radius: 10px;
 }

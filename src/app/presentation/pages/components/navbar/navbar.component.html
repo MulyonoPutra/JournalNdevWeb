@@ -4,15 +4,33 @@
       <div class="justify-content-start">
         <a class="font-style" routerLink="/"> JOURNAL NDEP </a>
       </div>
+      <div class="d-flex justify-content-center">
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Find By Category"
+            aria-label="Find By Category"
+            aria-describedby="button-addon2"
+          />
+          <button class="btn btn-primary" type="button" id="search-btn">
+            Search
+          </button>
+        </div>
+      </div>
       <div class="justify-content-end">
         <ul>
           <li class="nav-item" *ngIf="!isLogged">
-            <a class="nav-link" routerLink="/login"><i class="fas
-                fa-sign-in-alt"></i> Login</a>
+            <a class="nav-link" routerLink="/login">
+              <i class="fas fa-sign-in-alt"></i>
+              Login</a
+            >
           </li>
           <li class="nav-item" *ngIf="isLogged" (click)="onLogOut()">
-            <a class="nav-link" style="cursor: pointer"><i class="fas
-                fa-door-open"></i> Logout</a>
+            <a class="nav-link" style="cursor: pointer">
+              <i class="fas fa-door-open"></i>
+              Logout
+            </a>
           </li>
         </ul>
       </div>
@@ -24,21 +42,32 @@
       <div class="container-fluid">
         <div
           class="collapse navbar-collapse d-flex justify-content-start"
-          id="navbarNav">
+          id="navbarNav"
+        >
           <ul class="navbar-nav">
+            <li class="nav-item" *ngIf="isLogged">
+              <a class="nav-link" routerLink="/">Home</a>
+            </li>
+
             <li class="nav-item" *ngIf="isLogged">
               <a class="nav-link" routerLink="/card">Card</a>
             </li>
 
             <li class="nav-item" *ngIf="isLogged">
-              <a class="nav-link" routerLink="/post"><i class="far fa-list-alt"></i>
-                Post</a>
+              <a class="nav-link" routerLink="/post"
+                ><i class="far fa-list-alt"></i> Post</a
+              >
             </li>
             <li class="nav-item" *ngIf="isLogged">
-              <a class="nav-link" routerLink="/category"><i class="far
-                  fa-list-alt"></i> Category</a>
+              <a class="nav-link" routerLink="/category-update"
+                ><i class="far fa-list-alt"></i> Category</a
+              >
             </li>
-
+            <li class="nav-item" *ngIf="isLogged">
+              <a class="nav-link" routerLink="/feedback"
+                ><i class="far fa-list-alt"></i> Feedback</a
+              >
+            </li>
           </ul>
         </div>
         <div class="justify-content-end" *ngIf="isLogged">
@@ -48,14 +77,14 @@
                 src="/assets/images/png/instagram-sm.png"
                 alt="instagram"
                 class="social-icon"
-                />
+              />
             </li>
             <li class="nav-item col" *ngIf="isLogged">
               <img
                 src="/assets/images/png/facebook-sm.png"
                 alt="facebook"
                 class="social-icon"
-                />
+              />
             </li>
 
             <li class="nav-item col" *ngIf="isLogged">
@@ -63,14 +92,14 @@
                 src="/assets/images/png/twitter-sm.png"
                 alt="twitter"
                 class="social-icon"
-                />
+              />
             </li>
             <li class="nav-item col" *ngIf="isLogged">
               <img
                 src="/assets/images/png/youtube-sm.png"
                 alt="youtube"
                 class="social-icon"
-                />
+              />
             </li>
           </ul>
         </div>

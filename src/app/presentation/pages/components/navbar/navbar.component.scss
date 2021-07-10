@@ -102,7 +102,7 @@ nav.shift ul li a {
   z-index: 1;
 }
 nav.shift ul li a:hover {
-  color: #241804;
+  color: #f011c0;
 }
 nav.shift ul li a:after {
   display: block;
@@ -116,7 +116,7 @@ nav.shift ul li a:after {
   height: 1px;
   content: ".";
   color: transparent;
-  background: linear-gradient(to right, #f76d89 0%, #d6a6d6 51%, #d17a8b 100%);
+  // background: linear-gradient(to right, #f76d89 0%, #d6a6d6 51%, #d17a8b 100%);
   visibility: none;
   opacity: 0;
   z-index: -1;
@@ -155,4 +155,10 @@ nav ul li a:hover {
 .social-icon {
   height: 20px;
   width: 20px;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #673ab7;
+    border-color: #673ab7;
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Post } from 'src/app/core/domain/entities/post';
 import { PostRepository } from 'src/app/core/repository/post.repository';
 import { TokenService } from 'src/app/core/service/token.service';
@@ -10,19 +11,23 @@ import { UtilityService } from 'src/app/core/service/utils/utility.service';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent implements OnInit {
-  isLogged = false;
+  
+  public isLogged = false;
 
-  username = '';
+  public username = '';
 
-  postData: Array<Post>;
+  public posts: Post[] = [];
+
+  public postObject: Post;
 
   constructor(
     private tokenService: TokenService,
+    private postService: PostRepository,
     private utils: UtilityService,
-    private postService: PostRepository
+    private router: Router
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getUserToken();
     this.findAllPost();
     this.utils.setSpinner();
@@ -38,10 +43,46 @@ export class PostComponent implements OnInit {
     }
   }
 
-  findAllPost() {
-    this.postData = [];
-    this.postService.getAllPost().subscribe((data: Post[]) => {
-      this.postData = data;
+  findAllPost(): void {
+    this.posts = [];
+    this.postService.getAllPost().subscribe((value: Post[]) => {
+      this.posts = value;
+      console.log(value);
     });
+  }
+
+  gotoDetail(post: any): void {
+    this.postObject = post;
+    this.router.navigateByUrl('/post-details/' + post.id);
+  }
+
+  calculateDiff(date: any) {
+    let start = new Date().getTime();
+    let end = new Date(date.createdDate).getTime();
+    let time = start - end;
+    let diffDay = Math.floor(time / 86400000);
+    let diffHours = Math.floor((time % 86400000) / 3600000);
+    let diffMinutes = Math.floor((time % 86400000) % 3600000) / 60000;
+
+    if (diffDay >= 1) {
+      return diffDay;
+    } else {
+      return diffHours;
+    }
+  }
+
+  hourTime(key: any) {
+    let start = new Date().getTime();
+    let end = new Date(key.createdDate).getTime();
+    let time = start - end;
+    let diffDay = Math.floor(time / 86400000);
+    let diffHours = Math.floor(time % 86400000);
+    let diffMinutes = Math.floor((time % 86400000) % 3600000) / 60000;
+
+    if (diffDay >= 1) {
+      return (key = 'Days Ago');
+    } else {
+      return (key = 'Hours Ago');
+    }
   }
 }

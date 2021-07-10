@@ -7,6 +7,7 @@ import { Cards } from '../domain/entities/cards';
 export type EntityArrayResponseType = HttpResponse<Cards[]>;
 
 export abstract class CardsRepository {
+  
   abstract getAllCards(): Observable<Cards[]>;
 
   abstract addCards(categories: Cards): Observable<any>;

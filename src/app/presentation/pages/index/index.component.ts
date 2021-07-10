@@ -12,11 +12,11 @@ import { Router } from '@angular/router';
 })
 export class IndexComponent implements OnInit {
   
-  isLogged = false;
+  public isLogged = false;
 
-  username = '';
+  public username = '';
 
-  posts: Array<Post>;
+  public posts: Post[] = [];
 
   public postObject: Post;
 
@@ -27,7 +27,7 @@ export class IndexComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getUserToken();
     this.findAllPost();
     this.utils.setSpinner();
@@ -43,7 +43,7 @@ export class IndexComponent implements OnInit {
     }
   }
 
-  findAllPost() {
+  findAllPost(): void {
     this.posts = [];
     this.postService.getAllPost().subscribe((value: Post[]) => {
       this.posts = value;
@@ -51,8 +51,38 @@ export class IndexComponent implements OnInit {
     });
   }
 
-  gotoDetail(post: any) {
+  gotoDetail(post: any): void {
     this.postObject = post;
     this.router.navigateByUrl('/post-details/' + post.id);
+  }
+
+  calculateDiff(date: any) {
+    let start = new Date().getTime();
+    let end = new Date(date.createdDate).getTime();
+    let time = start - end;
+    let diffDay = Math.floor(time / 86400000);
+    let diffHours = Math.floor((time % 86400000) / 3600000);
+    let diffMinutes = Math.floor((time % 86400000) % 3600000) / 60000;
+
+    if (diffDay >= 1) {
+      return diffDay;
+    } else {
+      return diffHours;
+    }
+  }
+
+  hourTime(key: any) {
+    let start = new Date().getTime();
+    let end = new Date(key.createdDate).getTime();
+    let time = start - end;
+    let diffDay = Math.floor(time / 86400000);
+    let diffHours = Math.floor(time % 86400000);
+    let diffMinutes = Math.floor((time % 86400000) % 3600000) / 60000;
+
+    if (diffDay >= 1) {
+      return (key = 'Days Ago');
+    } else {
+      return (key = 'Hours Ago');
+    }
   }
 }

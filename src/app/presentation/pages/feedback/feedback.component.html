@@ -20,10 +20,11 @@
                 <div class="mb-4">
                   <h3>We Want Your Feedback</h3>
                   <p class="mb-4">
-                    We want your feedback for improve our website. Please send messages to us.
+                    We want your feedback for improve our website. Please send
+                    messages to us.
                   </p>
                 </div>
-                <form id="my-form" name="form" #f="ngForm" novalidate action="https://formspree.io/f/mleawekl" method="POST">
+                <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
                   <div class="form-group">
                     <mat-form-field appearance="outline" style="width: 420px">
                       <mat-label class="form-control-label" for="field_title"
@@ -35,6 +36,7 @@
                         name="username"
                         id="username"
                         data-cy="username"
+                        formControlName="username"
                         required
                       />
                     </mat-form-field>
@@ -50,6 +52,7 @@
                         name="email"
                         id="email"
                         data-cy="email"
+                        formControlName="email"
                         required
                       />
                     </mat-form-field>
@@ -65,12 +68,13 @@
                         name="messages"
                         id="messages"
                         data-cy="messages"
+                        formControlName="messages"
                         required
                       />
                     </mat-form-field>
                   </div>
                   <div class="form-group">
-                    <button id="my-form-button" class="btn btn-primary" [disabled]="!f.valid">
+                    <button class="btn btn-primary" [disabled]="editForm.invalid || isSaving">
                       Send Messages
                     </button>
                   </div>

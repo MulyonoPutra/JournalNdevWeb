@@ -25,3 +25,13 @@
 .card-img-top {
   border-radius: 10px;
 }
+
+.btn.btn-primary[disabled] {
+    color: #fff;
+    background-color: #fd0dfd;
+    border-color: #fd0dfd;
+}
+
+.form-control {
+   border-color: #fd0dfd;
+}

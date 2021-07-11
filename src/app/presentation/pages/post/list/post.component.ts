@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Search } from 'src/app/core/domain/dto/search';
 import { Post } from 'src/app/core/domain/entities/post';
 import { PostRepository } from 'src/app/core/repository/post.repository';
 import { TokenService } from 'src/app/core/service/token.service';
@@ -11,7 +12,6 @@ import { UtilityService } from 'src/app/core/service/utils/utility.service';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent implements OnInit {
-  
   public isLogged = false;
 
   public username = '';
@@ -19,6 +19,8 @@ export class PostComponent implements OnInit {
   public posts: Post[] = [];
 
   public postObject: Post;
+
+  public search: Search = new Search();
 
   constructor(
     private tokenService: TokenService,
@@ -51,10 +53,19 @@ export class PostComponent implements OnInit {
     });
   }
 
+  findByAuthor() {
+    this.postService.search(this.search).subscribe((data) => {
+      this.posts = data;
+      console.log(data);
+    });
+  }
+
   gotoDetail(post: any): void {
     this.postObject = post;
     this.router.navigateByUrl('/post-details/' + post.id);
   }
+
+
 
   calculateDiff(date: any) {
     let start = new Date().getTime();

@@ -11,6 +11,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 /* external */
 import { ToastrModule } from 'ngx-toastr';
 import { MaterialModule } from './core/utility/material';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { MaterialModule } from './core/utility/material';
     HttpClientModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
+    NgbModule,
   ],
 
   bootstrap: [AppComponent],

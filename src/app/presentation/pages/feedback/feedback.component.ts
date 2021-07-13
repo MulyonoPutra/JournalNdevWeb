@@ -7,6 +7,7 @@ import { finalize } from 'rxjs/operators';
 import { Feedback, IFeedback } from 'src/app/core/domain/entities/feedback';
 import { FeedbackRepository } from 'src/app/core/repository/feedback.repository';
 import { TokenService } from 'src/app/core/service/token.service';
+import { UtilityService } from 'src/app/core/service/utils/utility.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -29,10 +30,13 @@ export class FeedbackComponent implements OnInit, OnDestroy {
   constructor(
     protected tokenService: TokenService,
     protected feedbackService: FeedbackRepository,
-    protected fb: FormBuilder
+    protected fb: FormBuilder,
+    protected utils: UtilityService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.utils.setSpinner();
+  }
 
   getUserToken(): void {
     if (this.tokenService.getToken()) {

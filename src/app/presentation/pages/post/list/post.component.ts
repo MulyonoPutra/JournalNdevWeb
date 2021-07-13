@@ -12,6 +12,7 @@ import { UtilityService } from 'src/app/core/service/utils/utility.service';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent implements OnInit {
+  
   public isLogged = false;
 
   public username = '';
@@ -51,6 +52,12 @@ export class PostComponent implements OnInit {
       this.posts = value;
       console.log(value);
     });
+
+    this.clearSearch();
+  }
+
+  clearSearch() {
+    this.search.searchKey = '';
   }
 
   findByAuthor() {
@@ -64,8 +71,6 @@ export class PostComponent implements OnInit {
     this.postObject = post;
     this.router.navigateByUrl('/post-details/' + post.id);
   }
-
-
 
   calculateDiff(date: any) {
     let start = new Date().getTime();

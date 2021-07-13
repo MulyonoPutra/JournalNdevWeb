@@ -10,6 +10,7 @@ import { TokenService } from '../token.service';
 
 @Injectable()
 export class PostServiceImpl extends PostRepository {
+
   public post: Post;
 
   info: any;
@@ -49,11 +50,10 @@ export class PostServiceImpl extends PostRepository {
     );
   }
 
-  getPostByCategoryId(categoryId: any): Observable<any> {
-    // return this.http.get(
-    //   environment.baseEndpoint + 'api/post/search/category/' + categoryId
-    // );
-    return this.getAllPost().pipe(mergeMap((result) => result), first((post) => post.category_post?.id == categoryId));
+  getPostByCategoryId(categoryId: number): Observable<any> {
+    return this.http.get(
+      `${environment.baseEndpoint}api/post/search/category/${categoryId}`
+    );
   }
 
   search(search: Search): Observable<any> {

@@ -30,4 +30,8 @@ export class PostService extends PostRepository {
   search(search: Search): Observable<any> {
     return this.postRepository.search(search);
   }
+
+  getPostByCategoryId(categoryId: number): Observable<any> {
+    return this.postRepository.getPostByCategoryId(categoryId);
+  }
 }

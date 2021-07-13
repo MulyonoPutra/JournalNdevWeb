@@ -1,8 +1,9 @@
 /* Module */
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../core/utility/material';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 /* Components */
 import { PostComponent } from './pages/post/list/post.component';
@@ -10,6 +11,7 @@ import { IndexComponent } from './pages/index/index.component';
 import { LoginComponent } from './pages/authentication/login/login.component';
 import { NavbarComponent } from './pages/components/navbar/navbar.component';
 import { FooterComponent } from './pages/components/footer/footer.component';
+import { FeedbackComponent } from './pages/feedback/feedback.component';
 import { CategoryComponent } from './pages/category/list/category.component';
 import { RegisterComponent } from './pages/authentication/register/register.component';
 import { PostUpdateComponent } from './pages/post/update/post-update.component';
@@ -28,17 +30,18 @@ import { FoldingCardDetailsComponent } from './pages/folding-card/details/foldin
 
 /* Others */
 import { EditorModule } from '@tinymce/tinymce-angular';
-import { MaterialModule } from '../core/utility/material';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { PostRepository } from '../core/repository/post.repository';
 import { CardsRepository } from '../core/repository/cards.repository';
-import { PostServiceImpl } from '../core/service/impl/post.service-impl';
-import { NgxSpinnerModule } from 'ngx-spinner';
-import { CardsServiceImpl } from '../core/service/impl/cards.service-impl';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { FeedbackRepository } from '../core/repository/feedback.repository';
 import { CategoryRepository } from '../core/repository/category.repository';
+import { PostServiceImpl } from '../core/service/impl/post.service-impl';
+import { FeedbackServiceImpl } from '../core/service/impl/feedback.service-impl';
+import { CardsServiceImpl } from '../core/service/impl/cards.service-impl';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CategoryServiceImpl } from '../core/service/impl/category.service-impl';
+import { HttpErrorInterceptor } from '../core/interceptors/http-error.interceptor';
 import { ProdGuardService as guard } from '../core/guards/prod-guard.service';
-import { FeedbackComponent } from './pages/feedback/feedback.component';
 
 const routes: Routes = [
   {
@@ -50,6 +53,7 @@ const routes: Routes = [
       { path: 'register', component: RegisterComponent },
       { path: 'category', component: CategoryComponent },
       { path: 'category-update', component: CategoryUpdateComponent },
+      { path: 'category/:id', component: CategoryDetailsComponent },
 
       { path: 'card', component: FoldingCardComponent },
       { path: 'card-new', component: FoldingCardUpdateComponent },
@@ -63,19 +67,19 @@ const routes: Routes = [
         path: 'list',
         component: ProductListComponent,
         canActivate: [guard],
-        data: { expectedRol: ['admin', 'user'] },
+        data: { expectedRole: ['admin', 'user'] },
       },
       {
         path: 'details/:id',
         component: ProductDetailsComponent,
         canActivate: [guard],
-        data: { expectedRol: ['admin', 'user'] },
+        data: { expectedRole: ['admin', 'user'] },
       },
       {
         path: 'edit/:id',
         component: ProductEditComponent,
         canActivate: [guard],
-        data: { expectedRol: ['admin'] },
+        data: { expectedRole: ['admin'] },
       },
     ],
   },
@@ -84,27 +88,27 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    PresentationComponent,
+    PostComponent,
     IndexComponent,
     LoginComponent,
-    RegisterComponent,
-    ProductListComponent,
-    ProductDetailsComponent,
-    ProductNewComponent,
-    ProductEditComponent,
-    CategoryComponent,
     NavbarComponent,
     FooterComponent,
-    PageNotFoundComponent,
-    PostComponent,
-    PostDetailsComponent,
+    FeedbackComponent,
+    CategoryComponent,
+    RegisterComponent,
+    ProductNewComponent,
     PostUpdateComponent,
     FoldingCardComponent,
+    PostDetailsComponent,
+    ProductEditComponent,
+    ProductListComponent,
+    PresentationComponent,
+    PageNotFoundComponent,
+    CategoryUpdateComponent,
+    ProductDetailsComponent,
+    CategoryDetailsComponent,
     FoldingCardDetailsComponent,
     FoldingCardUpdateComponent,
-    CategoryUpdateComponent,
-    CategoryDetailsComponent,
-    FeedbackComponent,
   ],
   imports: [
     CommonModule,
@@ -112,7 +116,6 @@ const routes: Routes = [
     MaterialModule,
     NgxSpinnerModule,
     RouterModule,
-    MatFormFieldModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     EditorModule,
@@ -123,6 +126,12 @@ const routes: Routes = [
     { provide: PostRepository, useClass: PostServiceImpl },
     { provide: CardsRepository, useClass: CardsServiceImpl },
     { provide: CategoryRepository, useClass: CategoryServiceImpl },
+    { provide: FeedbackRepository, useClass: FeedbackServiceImpl },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true,
+    },
   ],
 })
 export class PresentationModule {}

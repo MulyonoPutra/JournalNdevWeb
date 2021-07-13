@@ -4,20 +4,6 @@
       <div class="justify-content-start">
         <a class="font-style" routerLink="/"> JOURNAL NDEP </a>
       </div>
-      <div class="d-flex justify-content-center">
-        <div class="input-group mb-3" *ngIf="isLogged">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Find By Category"
-            aria-label="Find By Category"
-            aria-describedby="button-addon2"
-          />
-          <button class="btn btn-primary" type="button" id="search-btn">
-            Search
-          </button>
-        </div>
-      </div>
       <div class="justify-content-end">
         <ul>
           <li class="nav-item" *ngIf="!isLogged">
@@ -59,7 +45,7 @@
               >
             </li>
             <li class="nav-item" *ngIf="isLogged">
-              <a class="nav-link" routerLink="/category-update"
+              <a class="nav-link" routerLink="/category"
                 ><i class="far fa-list-alt"></i> Category</a
               >
             </li>

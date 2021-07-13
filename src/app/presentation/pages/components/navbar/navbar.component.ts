@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Search } from 'src/app/core/domain/dto/search';
+import { Post } from 'src/app/core/domain/entities/post';
+import { PostRepository } from 'src/app/core/repository/post.repository';
 import { TokenService } from 'src/app/core/service/token.service';
 
 @Component({
@@ -8,10 +11,18 @@ import { TokenService } from 'src/app/core/service/token.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  
+
   isLogged = false;
 
-  constructor(private tokenService: TokenService, private router: Router) {}
+  public posts: Post[] = [];
+
+  public search: Search = new Search();
+
+  constructor(
+    private tokenService: TokenService,
+    private router: Router,
+    private postService: PostRepository
+  ) {}
 
   ngOnInit() {
     this.getUserToken();
@@ -29,5 +40,12 @@ export class NavbarComponent implements OnInit {
     this.tokenService.logOut();
     this.router.navigate(['/login']);
     window.location.reload();
+  }
+
+  findByAuthor() {
+    this.postService.search(this.search).subscribe((data) => {
+      this.posts = data;
+      console.log(data);
+    });
   }
 }

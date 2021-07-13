@@ -15,14 +15,14 @@ export class UtilityService {
   ) {}
 
   /* Function to set spinner when navigate to other page */
-  setSpinner() {
+  setSpinner(): void {
     this.spinner.show();
     setTimeout(() => {
       this.spinner.hide();
     }, 500);
   }
 
-  checkUserToken() {
+  checkUserToken(): void {
     if (this.tokenService.getToken()) {
       this.isLogged = true;
     } else {

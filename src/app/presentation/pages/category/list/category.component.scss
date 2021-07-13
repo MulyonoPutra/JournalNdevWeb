@@ -1,0 +1,19 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border-radius: 20px;
+  border: white;
+  background-image: linear-gradient(
+    to right,
+    rgb(255, 0, 221),
+    rgb(252, 252, 252)
+  );
+}
+
+a {
+  color: azure;
+}

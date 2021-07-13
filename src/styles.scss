@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lexend&display=swap");
+@import '~bootstrap/scss/bootstrap';
 
 .font-style {
   font-family: "Lexend", sans-serif;
@@ -34,15 +35,29 @@ body {
 
 .btn-primary {
     color: #fff;
-    background-color: #fd0dfd;
-    border-color: #fd0dfd;
+    background-color: #fd0dfd !important;
+    border-color: #fd0dfd !important;
 }
 
 .btn-primary:hover {
-  background-color: #ca18ca;
-  border-color: #fd0dfd;
+  background-color: #ca18ca !important;
+  border-color: #fd0dfd !important;
 }
 
+
+
 a:hover {
-  color: #fd0dfd
+  color: #fd0dfd;
+  text-decoration: none;
 }
+
+
+.text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+

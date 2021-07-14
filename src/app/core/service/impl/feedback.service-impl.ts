@@ -7,7 +7,7 @@ import { FeedbackRepository } from '../../repository/feedback.repository';
 
 @Injectable()
 export class FeedbackServiceImpl extends FeedbackRepository {
-  
+
   public feedback: Feedback;
 
   constructor(private http: HttpClient) {
@@ -21,4 +21,5 @@ export class FeedbackServiceImpl extends FeedbackRepository {
   addFeedback(feedback: Feedback): Observable<any> {
     return this.http.post(environment.baseEndpoint + 'api/feedback', feedback);
   }
+  
 }

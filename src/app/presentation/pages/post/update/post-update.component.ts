@@ -27,7 +27,8 @@ import { TokenService } from 'src/app/core/service/token.service';
   styleUrls: ['./post-update.component.scss'],
 })
 export class PostUpdateComponent implements OnInit, OnDestroy {
-  public isLogged = false;
+  
+  public isLoggedIn = false;
 
   public isSaving = false;
 
@@ -70,9 +71,9 @@ export class PostUpdateComponent implements OnInit, OnDestroy {
 
   getUserToken(): void {
     if (this.tokenService.getToken()) {
-      this.isLogged = true;
+      this.isLoggedIn = true;
     } else {
-      this.isLogged = false;
+      this.isLoggedIn = false;
     }
   }
 
@@ -143,9 +144,7 @@ export class PostUpdateComponent implements OnInit, OnDestroy {
     this.previousState();
   }
 
-  protected onSaveError(): void {
-    // Api for inheritance.
-  }
+  protected onSaveError(): void {}
 
   protected onSaveFinalize(): void {
     this.isSaving = false;

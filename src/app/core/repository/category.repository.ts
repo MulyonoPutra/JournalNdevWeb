@@ -15,9 +15,4 @@ export abstract class CategoryRepository {
 
   abstract query(): Observable<EntityArrayResponseType>;
 
-  // abstract addCategoryToCollectionIfMissing(
-  //   categoryCollection: Category[],
-  //   categoriesToCheck: (Category | null | undefined)[]
-  // ): Observable<Category[]>;
-
 }

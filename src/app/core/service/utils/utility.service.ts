@@ -7,7 +7,7 @@ import { TokenService } from '../token.service';
 })
 export class UtilityService {
 
-  isLogged = false;
+  isLoggedIn = false;
 
   constructor(
     private spinner: NgxSpinnerService,
@@ -24,9 +24,9 @@ export class UtilityService {
 
   checkUserToken(): void {
     if (this.tokenService.getToken()) {
-      this.isLogged = true;
+      this.isLoggedIn = true;
     } else {
-      this.isLogged = false;
+      this.isLoggedIn = false;
     }
   }
 }

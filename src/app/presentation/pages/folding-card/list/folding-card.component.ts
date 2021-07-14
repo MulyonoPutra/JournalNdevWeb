@@ -11,19 +11,18 @@ import { UtilityService } from 'src/app/core/service/utils/utility.service';
   styleUrls: ['./folding-card.component.scss'],
 })
 export class FoldingCardComponent implements OnInit, OnDestroy {
-
-  isLogged = false;
+  
+  isLoggedIn = false;
 
   username = '';
 
-  cards: Array<Cards>;
+  cards: Cards[] = [];
 
   constructor(
     private tokenService: TokenService,
     private utils: UtilityService,
     private cardsService: CardsRepository
   ) {}
-
 
   ngOnDestroy(): void {
     window.location.reload();
@@ -36,10 +35,10 @@ export class FoldingCardComponent implements OnInit, OnDestroy {
 
   getUserToken(): void {
     if (this.tokenService.getToken()) {
-      this.isLogged = true;
+      this.isLoggedIn = true;
       this.username = this.tokenService.getUserName();
     } else {
-      this.isLogged = false;
+      this.isLoggedIn = false;
       this.username = '';
     }
   }

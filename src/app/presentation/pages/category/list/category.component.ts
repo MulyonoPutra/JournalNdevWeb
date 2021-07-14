@@ -12,16 +12,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./category.component.scss'],
 })
 export class CategoryComponent implements OnInit {
-  
-  isLogged = false;
 
-  username = '';
+  public isLoggedIn = false;
 
-  currentCategoryId: number = 1;
+  public username = '';
 
-  categories: Array<Category>;
+  public currentCategoryId: number = 1;
 
-  postObject: Post;
+  public categories: Category[] = [];
+
+  public postObject: Post;
 
   constructor(
     private tokenService: TokenService,
@@ -53,8 +53,6 @@ export class CategoryComponent implements OnInit {
     }
   }
 
-  findByCategory(): void {}
-
   gotoDetail(post: any): void {
     this.postObject = post;
     this.router.navigateByUrl('/category-details/' + post.id);
@@ -62,10 +60,10 @@ export class CategoryComponent implements OnInit {
 
   getUserToken(): void {
     if (this.tokenService.getToken()) {
-      this.isLogged = true;
+      this.isLoggedIn = true;
       this.username = this.tokenService.getUserName();
     } else {
-      this.isLogged = false;
+      this.isLoggedIn = false;
       this.username = '';
     }
   }

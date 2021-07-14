@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./index.component.scss'],
 })
 export class IndexComponent implements OnInit {
-  
-  public isLogged = false;
+
+  public isLoggedIn = false;
 
   public username = '';
 
@@ -35,10 +35,10 @@ export class IndexComponent implements OnInit {
 
   getUserToken(): void {
     if (this.tokenService.getToken()) {
-      this.isLogged = true;
+      this.isLoggedIn = true;
       this.username = this.tokenService.getUserName();
     } else {
-      this.isLogged = false;
+      this.isLoggedIn = false;
       this.username = '';
     }
   }

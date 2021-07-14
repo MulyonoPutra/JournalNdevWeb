@@ -12,13 +12,20 @@ import { UtilityService } from 'src/app/core/service/utils/utility.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  register?: Register;
-  name: any;
-  username: any;
-  email: any;
-  password: any;
-  errMsj: any;
-  isLogged = false;
+
+  public register?: Register;
+
+  public name: any;
+
+  public username: any;
+
+  public email: any;
+
+  public password: any;
+
+  public errorMessage: any;
+
+  public isLoggedIn = false;
 
   constructor(
     private tokenService: TokenService,
@@ -30,9 +37,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     if (this.tokenService.getToken()) {
-      this.isLogged = true;
+      this.isLoggedIn = true;
     }
-    this.utils.setSpinner()
+    this.utils.setSpinner();
   }
 
   onRegister(): void {
@@ -44,7 +51,7 @@ export class RegisterComponent implements OnInit {
     );
     this.authService.new(this.register).subscribe(
       (data) => {
-        this.toastr.success('Cuenta Creada', 'OK', {
+        this.toastr.success('Created!', 'OK', {
           timeOut: 3000,
           positionClass: 'toast-top-center',
         });
@@ -52,8 +59,8 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/login']);
       },
       (err) => {
-        this.errMsj = err.error.mensaje;
-        this.toastr.error(this.errMsj, 'Fail', {
+        this.errorMessage = err.error.mensaje;
+        this.toastr.error(this.errorMessage, 'Failed', {
           timeOut: 3000,
           positionClass: 'toast-top-center',
         });

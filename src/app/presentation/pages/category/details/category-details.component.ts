@@ -9,10 +9,10 @@ import { PostRepository } from 'src/app/core/repository/post.repository';
   styleUrls: ['./category-details.component.scss'],
 })
 export class CategoryDetailsComponent implements OnInit {
+  
+  public postCollection: Post[] = [];
 
-  postCollection: Array<Post>;
-
-  currentCategoryId: number;
+  public currentCategoryId: number;
 
   constructor(
     private activatedRoute: ActivatedRoute,

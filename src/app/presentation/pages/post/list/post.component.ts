@@ -12,14 +12,14 @@ import { UtilityService } from 'src/app/core/service/utils/utility.service';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent implements OnInit {
-  
-  public isLogged = false;
+
+  public isLoggedIn = false;
 
   public username = '';
 
-  public posts: Post[] = [];
+  public postCollection: Post[] = [];
 
-  public postObject: Post;
+  public post: Post;
 
   public search: Search = new Search();
 
@@ -38,18 +38,18 @@ export class PostComponent implements OnInit {
 
   getUserToken(): void {
     if (this.tokenService.getToken()) {
-      this.isLogged = true;
+      this.isLoggedIn = true;
       this.username = this.tokenService.getUserName();
     } else {
-      this.isLogged = false;
+      this.isLoggedIn = false;
       this.username = '';
     }
   }
 
   findAllPost(): void {
-    this.posts = [];
+    this.postCollection = [];
     this.postService.getAllPost().subscribe((value: Post[]) => {
-      this.posts = value;
+      this.postCollection = value;
       console.log(value);
     });
 
@@ -62,13 +62,13 @@ export class PostComponent implements OnInit {
 
   findByAuthor() {
     this.postService.search(this.search).subscribe((data) => {
-      this.posts = data;
+      this.postCollection = data;
       console.log(data);
     });
   }
 
   gotoDetail(post: any): void {
-    this.postObject = post;
+    this.post = post;
     this.router.navigateByUrl('/post-details/' + post.id);
   }
 

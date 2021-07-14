@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Login } from 'src/app/core/domain/dto/login';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { TokenService } from 'src/app/core/service/token.service';
@@ -13,28 +12,25 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
-  isLogged = false;
-
-  isLoginFail = false;
-
-  loginDto!: Login;
-
-  username!: string;
-
-  password!: string;
-
-  errorMessage!: string;
+  
+  public isLoggedIn = false;
 
   public isLoginFailed = false;
 
-  roles: string[] = [];
+  public loginDto!: Login;
+
+  public username!: string;
+
+  public password!: string;
+
+  public errorMessage!: string;
+
+  public roles: string[] = [];
 
   constructor(
     private tokenService: TokenService,
     private authService: AuthService,
     private router: Router,
-    private toastr: ToastrService,
     private utils: UtilityService
   ) {}
 
@@ -45,10 +41,10 @@ export class LoginComponent implements OnInit {
 
   getUserToken() {
     if (this.tokenService.getToken()) {
-      this.isLogged = true;
-      this.isLoginFail = false;
+      this.isLoggedIn = true;
+      this.isLoginFailed = false;
       this.roles = this.tokenService.getAuthorities();
-      this.router.navigate(['/'])
+      this.router.navigate(['/']);
     }
   }
 
@@ -56,7 +52,7 @@ export class LoginComponent implements OnInit {
     this.loginDto = new Login(this.username, this.password);
     this.authService.login(this.loginDto).subscribe(
       (data) => {
-        this.isLogged = true;
+        this.isLoggedIn = true;
 
         this.tokenService.setToken(data.token);
         this.tokenService.setUserName(data.username);
@@ -66,13 +62,9 @@ export class LoginComponent implements OnInit {
         this.autoReload();
       },
       (err) => {
-        this.isLoginFailed = true;
-        this.isLogged = false;
+        this.isLoggedIn = false;
         this.errorMessage = err.error.message;
-        this.toastr.error(this.errorMessage, 'Failed!', {
-          timeOut: 3000,
-          positionClass: 'toast-top-center',
-        });
+        this.failed();
       }
     );
   }
@@ -81,7 +73,11 @@ export class LoginComponent implements OnInit {
     window.location.reload();
   }
 
-  successAlert() {
-    Swal.fire('Good job!', 'You clicked the button!', 'success');
+  failed() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Invalid username or password',
+    });
   }
 }

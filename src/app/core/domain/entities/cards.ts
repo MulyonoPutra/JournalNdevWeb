@@ -14,9 +14,3 @@ export class ICards implements Cards {
   ) {}
 }
 
-export interface CardsEntity {
-  id: number;
-  title: string;
-  imagesContentType?: string;
-  images?: string;
-}

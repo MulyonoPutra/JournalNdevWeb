@@ -24,7 +24,7 @@ import { TokenService } from 'src/app/core/service/token.service';
 })
 export class FoldingCardUpdateComponent implements OnInit, OnDestroy {
 
-  public isLogged = false;
+  public isLoggedIn = false;
 
   public isSaving = false;
 
@@ -55,9 +55,9 @@ export class FoldingCardUpdateComponent implements OnInit, OnDestroy {
 
   getUserToken(): void {
     if (this.tokenService.getToken()) {
-      this.isLogged = true;
+      this.isLoggedIn = true;
     } else {
-      this.isLogged = false;
+      this.isLoggedIn = false;
     }
   }
 
@@ -124,9 +124,7 @@ export class FoldingCardUpdateComponent implements OnInit, OnDestroy {
     this.previousState();
   }
 
-  protected onSaveError(): void {
-    // Api for inheritance.
-  }
+  protected onSaveError(): void {}
 
   protected onSaveFinalize(): void {
     this.isSaving = false;

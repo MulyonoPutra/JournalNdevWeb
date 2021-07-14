@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Search } from '../domain/dto/search';
 import { Category } from '../domain/entities/category';
-import { CategoryRepository } from '../repository/category.repository';
+import {
+  CategoryRepository,
+} from '../repository/category.repository';
 
 export type EntityArrayResponseType = HttpResponse<Category[]>;
 @Injectable()
 export class CategoryService extends CategoryRepository {
-
   constructor(private categoryRepository: CategoryRepository) {
     super();
   }
@@ -20,20 +21,20 @@ export class CategoryService extends CategoryRepository {
     return this.categoryRepository.getAllCategory();
   }
 
-  search(search: Search): Observable<any> {
-    return this.categoryRepository.search(search);
-  }
-
-  query(): Observable<EntityArrayResponseType> {
-    return this.categoryRepository.query();
-  }
-
-  addCategoryToCollectionIfMissing(categoryCollection: Category[], categoriesToCheck: (Category | null | undefined)[]):
-  Observable<Category[]> {
+  addCategoryToCollectionIfMissing(
+    categoryCollection: Category[],
+    categoriesToCheck: (Category | null | undefined)[]
+  ): Observable<Category[]> {
     return this.addCategoryToCollectionIfMissing(
       categoryCollection,
       categoriesToCheck
     );
   }
 
+  search(search: Search): Observable<any> {
+    throw new Error('Method not implemented.');
+  }
+  query(): Observable<EntityArrayResponseType> {
+    throw new Error('Method not implemented.');
+  }
 }

@@ -6,13 +6,13 @@
       </div>
       <div class="justify-content-end">
         <ul>
-          <li class="nav-item" *ngIf="!isLogged">
+          <li class="nav-item" *ngIf="!isLoggedIn">
             <a class="nav-link" routerLink="/login">
               <i class="fas fa-sign-in-alt"></i>
               Login</a
             >
           </li>
-          <li class="nav-item" *ngIf="isLogged" (click)="onLogOut()">
+          <li class="nav-item" *ngIf="isLoggedIn" (click)="onLogOut()">
             <a class="nav-link" style="cursor: pointer">
               <i class="fas fa-door-open"></i>
               Logout
@@ -31,32 +31,32 @@
           id="navbarNav"
         >
           <ul class="navbar-nav">
-            <li class="nav-item" *ngIf="isLogged">
+            <li class="nav-item" *ngIf="isLoggedIn">
               <a class="nav-link" routerLink="/">Home</a>
             </li>
 
-            <li class="nav-item" *ngIf="isLogged">
+            <li class="nav-item" *ngIf="isLoggedIn">
               <a class="nav-link" routerLink="/card">Card</a>
             </li>
 
-            <li class="nav-item" *ngIf="isLogged">
+            <li class="nav-item" *ngIf="isLoggedIn">
               <a class="nav-link" routerLink="/post"
                 ><i class="far fa-list-alt"></i> Post</a
               >
             </li>
-            <li class="nav-item" *ngIf="isLogged">
+            <li class="nav-item" *ngIf="isLoggedIn">
               <a class="nav-link" routerLink="/category"
                 ><i class="far fa-list-alt"></i> Category</a
               >
             </li>
-            <li class="nav-item" *ngIf="isLogged">
+            <li class="nav-item" *ngIf="isLoggedIn">
               <a class="nav-link" routerLink="/feedback"
                 ><i class="far fa-list-alt"></i> Feedback</a
               >
             </li>
           </ul>
         </div>
-        <div class="justify-content-end" *ngIf="isLogged">
+        <div class="justify-content-end" *ngIf="isLoggedIn">
           <ul class="navbar-nav row">
             <li class="nav-item col">
               <img
@@ -65,7 +65,7 @@
                 class="social-icon"
               />
             </li>
-            <li class="nav-item col" *ngIf="isLogged">
+            <li class="nav-item col" *ngIf="isLoggedIn">
               <img
                 src="/assets/images/png/facebook.png"
                 alt="facebook"
@@ -73,7 +73,7 @@
               />
             </li>
 
-            <li class="nav-item col" *ngIf="isLogged">
+            <li class="nav-item col" *ngIf="isLoggedIn">
               <img
                 src="/assets/images/png/twitter.png"
                 alt="twitter"

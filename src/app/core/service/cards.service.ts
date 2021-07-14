@@ -21,12 +21,5 @@ export class CardsService extends CardsRepository {
     return this.cardsRepository.addCards(cards);
   }
 
-  search(search: Search): Observable<any> {
-    return this.cardsRepository.search(search);
-  }
 
-  query(): Observable<EntityArrayResponseType> {
-    throw new Error('Method not implemented.');
-  }
-  
 }

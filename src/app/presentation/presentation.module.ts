@@ -42,6 +42,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CategoryServiceImpl } from '../core/service/impl/category.service-impl';
 import { HttpErrorInterceptor } from '../core/interceptors/http-error.interceptor';
 import { ProdGuardService as guard } from '../core/guards/prod-guard.service';
+import { NoDataComponent } from './pages/no-data/no-data.component';
 
 const routes: Routes = [
   {
@@ -93,6 +94,7 @@ const routes: Routes = [
     LoginComponent,
     NavbarComponent,
     FooterComponent,
+    NoDataComponent,
     FeedbackComponent,
     CategoryComponent,
     RegisterComponent,

@@ -19,25 +19,23 @@ import { NgxSpinnerService } from 'ngx-spinner';
     <app-footer class="fixed-footer"></app-footer>
   `,
   styles: [
-      `
-        .fixed-footer {
-          width: 100%;
-          bottom: -25%;
-          position: relative;
-          margin-top: -50px;
-        }
-        .main-wrapper {
-          display: flex;
-          flex-direction: column;
-        }
-      `
-    ]
+    `
+      .fixed-footer {
+        width: 100%;
+        bottom: -25%;
+        position: relative;
+        margin-top: -50px;
+      }
+      .main-wrapper {
+        display: flex;
+        flex-direction: column;
+      }
+    `,
+  ],
 })
-
 export class PresentationComponent implements OnInit {
-  public isLogged = false;
 
-  public router: any;
+  public isLoggedIn = false;
 
   constructor(
     private tokenService: TokenService,
@@ -54,18 +52,9 @@ export class PresentationComponent implements OnInit {
 
   getUserToken() {
     if (this.tokenService.getToken()) {
-      this.isLogged = true;
+      this.isLoggedIn = true;
     } else {
-      this.isLogged = false;
+      this.isLoggedIn = false;
     }
   }
-
-  reloadCurrentRoute() {
-    let currentUrl = this.router.url;
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate([currentUrl]);
-      console.log(currentUrl);
-    });
-  }
-
 }

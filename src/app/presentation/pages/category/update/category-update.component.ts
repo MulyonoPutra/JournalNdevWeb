@@ -16,7 +16,8 @@ import { TokenService } from 'src/app/core/service/token.service';
   styleUrls: ['./category-update.component.scss'],
 })
 export class CategoryUpdateComponent implements OnInit {
-  public isLogged = false;
+
+  public isLoggedIn = false;
 
   public isSaving = false;
 
@@ -45,9 +46,9 @@ export class CategoryUpdateComponent implements OnInit {
 
   getUserToken(): void {
     if (this.tokenService.getToken()) {
-      this.isLogged = true;
+      this.isLoggedIn = true;
     } else {
-      this.isLogged = false;
+      this.isLoggedIn = false;
     }
   }
 

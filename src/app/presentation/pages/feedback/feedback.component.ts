@@ -16,7 +16,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./feedback.component.scss'],
 })
 export class FeedbackComponent implements OnInit, OnDestroy {
-  public isLogged = false;
+
+  public isLoggedIn = false;
 
   public isSaving = false;
 
@@ -40,9 +41,9 @@ export class FeedbackComponent implements OnInit, OnDestroy {
 
   getUserToken(): void {
     if (this.tokenService.getToken()) {
-      this.isLogged = true;
+      this.isLoggedIn = true;
     } else {
-      this.isLogged = false;
+      this.isLoggedIn = false;
     }
   }
 
@@ -82,9 +83,7 @@ export class FeedbackComponent implements OnInit, OnDestroy {
     }, 7000);
   }
 
-  protected onSaveError(): void {
-    // Api for inheritance.
-  }
+  protected onSaveError(): void {}
 
   protected onSaveFinalize(): void {
     this.isSaving = false;

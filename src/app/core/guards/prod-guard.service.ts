@@ -17,11 +17,12 @@ export class ProdGuardService implements CanActivate {
   constructor(private tokenService: TokenService, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    
     const expectedRole = route.data.expectedRole;
     const roles = this.tokenService.getAuthorities();
     this.currentRole = 'user';
-    roles.forEach((rol) => {
-      if (rol === 'ROLE_ADMIN') {
+    roles.forEach((role) => {
+      if (role === 'ROLE_ADMIN') {
         this.currentRole = 'admin';
       }
     });

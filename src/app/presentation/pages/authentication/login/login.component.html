@@ -1,45 +1,4 @@
-<!--
-<div class="text-center" *ngIf="isLogged; else loggedOut">
-    <h2>You have already logged in</h2>
-</div>
-
-<ng-template #loggedOut>
-    <div class="container d-flex justify-content-center">
-        <div class="card">
-            <div class="card-header">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                      <a class="nav-link active" routerLink="/login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" routerLink="/register">Register</a>
-                    </li>
-
-                  </ul>
-            </div>
-            <div class="card-body">
-                <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" name="username" id="username" class="form-control"
-                        [(ngModel)]="username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password" class="form-control"
-                        [(ngModel)]="password" required>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">
-                            <i class="fas fa-sign-in-alt"></i> Login</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</ng-template> -->
-
-<div class="text-center" *ngIf="isLogged; else loggedOut">
+<div class="text-center" *ngIf="isLoggedIn; else loggedOut">
   <app-index></app-index>
 </div>
 
@@ -104,7 +63,7 @@
                     </button>
                     <br />
                     <div
-                      *ngIf="f.submitted && isLoginFail"
+                      *ngIf="f.submitted && isLoginFailed"
                       class="alert alert-danger"
                     >
                       Login failed: {{ errorMessage }}
@@ -126,21 +85,21 @@
                         <img
                           src="/assets/images/png/instagram.png"
                           alt="instagram"
-                          class="social-size"
+                          class="social-media-icon"
                         />
                       </div>
                       <div class="col">
                         <img
                           src="/assets/images/png/twitter.png"
                           alt="twitter"
-                          class="social-size"
+                          class="social-media-icon"
                         />
                       </div>
                       <div class="col">
                         <img
                           src="/assets/images/png/facebook.png"
                           alt="facebook"
-                          class="social-size"
+                          class="social-media-icon"
                         />
                       </div>
                     </div>

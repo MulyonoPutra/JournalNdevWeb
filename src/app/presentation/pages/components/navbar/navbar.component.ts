@@ -12,7 +12,7 @@ import { TokenService } from 'src/app/core/service/token.service';
 })
 export class NavbarComponent implements OnInit {
 
-  isLogged = false;
+  public isLoggedIn = false;
 
   public posts: Post[] = [];
 
@@ -21,7 +21,6 @@ export class NavbarComponent implements OnInit {
   constructor(
     private tokenService: TokenService,
     private router: Router,
-    private postService: PostRepository
   ) {}
 
   ngOnInit() {
@@ -30,9 +29,9 @@ export class NavbarComponent implements OnInit {
 
   getUserToken() {
     if (this.tokenService.getToken()) {
-      this.isLogged = true;
+      this.isLoggedIn = true;
     } else {
-      this.isLogged = false;
+      this.isLoggedIn = false;
     }
   }
 
@@ -40,12 +39,5 @@ export class NavbarComponent implements OnInit {
     this.tokenService.logOut();
     this.router.navigate(['/login']);
     window.location.reload();
-  }
-
-  findByAuthor() {
-    this.postService.search(this.search).subscribe((data) => {
-      this.posts = data;
-      console.log(data);
-    });
   }
 }

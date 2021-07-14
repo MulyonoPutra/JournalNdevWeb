@@ -14,7 +14,7 @@ export class PostDetailsComponent implements OnInit {
 
   public post: Post;
 
-  public postData: Post[] = [];
+  public postCollection: Post[] = [];
 
   constructor(
     private postService: PostRepository,
@@ -39,5 +39,5 @@ export class PostDetailsComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-  
+
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Post } from 'src/app/core/domain/entities/post';
 import { PostRepository } from 'src/app/core/repository/post.repository';
+import { UtilityService } from 'src/app/core/service/utils/utility.service';
 
 @Component({
   selector: 'app-category-details',
@@ -9,18 +10,21 @@ import { PostRepository } from 'src/app/core/repository/post.repository';
   styleUrls: ['./category-details.component.scss'],
 })
 export class CategoryDetailsComponent implements OnInit {
-  
+
   public postCollection: Post[] = [];
 
   public currentCategoryId: number;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private postService: PostRepository
+    private postService: PostRepository,
+    private utils: UtilityService
   ) {}
 
   ngOnInit(): void {
+    this.utils.setSpinner();
     this.activatedRoute.paramMap.subscribe(() => {
+      this.utils.setSpinner();
       this.getPostByCategoryId();
     });
   }

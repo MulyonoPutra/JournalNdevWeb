@@ -1,3 +1,10 @@
+.text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
 .card-footer {
   padding: 0.5rem 1rem;
   background-color: #ffffff;
@@ -13,6 +20,11 @@
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid #dc354500;
+  height: 70vh !important
+}
+
+.font-size {
+  font-size: 10px !important;
 }
 
 .card-img-top {
@@ -22,3 +34,5 @@
 .card-border {
   border-radius: 20px;
 }
+
+

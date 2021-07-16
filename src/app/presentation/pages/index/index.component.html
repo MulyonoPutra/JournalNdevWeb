@@ -1,47 +1,55 @@
 <div class="container">
-  <div *ngIf="isLoggedIn; else loggedOut">
-    <!-- jumbotron -->
-    <div class="jumbotron mb-5">
-      <div class="d-flex justify-content-center"></div>
-    </div>
-    <!-- content -->
-    <div class="container" class="pull-left readMore">
-      <div class="row">
-        <div class="mt-3 col-md-3 position-relative" *ngFor="let post of posts">
-          <div class="card box" style="width: 21rem" data-aos="zoom-in">
-            <img
-              [src]="'data:' + post.imagesContentType + ';base64,' +
-              post.images"
-              class="card-img-top"
-              />
-            <div class="card-body">
-              <h5 class="card-title">{{ post?.title }}</h5>
-              <p>{{ post.category_post?.name }}</p>
-              <p class="text" [innerHTML]="post.content"></p>
-              <a style="color: #fd0dfd;" (click)="gotoDetail(post)">
-                <p>Read More..</p>
-              </a>
-            </div>
-            <div class="card-footer">
-              <div class="d-flex bd-highlight mb-3">
-                <div class="font-size me-auto p-2 bd-highlight">
-                  <!-- {{ post?.createdDate | date: "short" }} -->
-                  {{ calculateDiff(post) }} {{ hourTime(post) }}
-                </div>
-                <div class="font-size p-2 bd-highlight"></div>
-                <div class="font-size p-2 bd-highlight">
-                  {{ post?.author }}
-                </div>
-              </div>
-            </div>
-          </div>
+    <div
+        *ngIf="isLoggedIn; else loggedOut">
+        <!-- jumbotron -->
+        <div class="jumbotron mb-5">
+            <div class="d-flex justify-content-center"></div>
         </div>
-        <div class="col-md-3"></div>
-      </div>
+        <!-- content -->
+        <div class="container" class="pull-left readMore">
+            <div class="row">
+                <div class="mt-3 col-md-3 position-relative" *ngFor="let post of posts">
+                    <div class="card box" style="width: 21rem" data-aos="zoom-in">
+                        <img [src]="'data:' + post.imagesContentType + ';base64,' + post.images" class="card-img-top"/>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ post?.title }}</h5>
+                            <p>{{ post.category_post?.name }}</p>
+                            <p class="text" [innerHTML]="post.content"></p>
+                            <a style="color: #fd0dfd" (click)="postDetailsRoute(post)">
+                                <p>Read More..</p>
+                            </a>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex bd-highlight mb-3">
+                                <div
+                                    class="font-size me-auto p-2 bd-highlight">
+                                    <!-- {{ post?.createdDate | date: "short" }} -->
+                                    {{ calculateDiff(post) }}
+                                    {{ hourTime(post) }}
+                                </div>
+                                <div class="font-size p-2 bd-highlight"></div>
+                                <div class="font-size p-2 bd-highlight">
+                                    {{ post?.author }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="text-center">
+                <div>
+                    <a routerLink="/post">
+                        <button class="btn btn-primary">View More Writing..</button>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <ng-template #loggedOut>
-  <app-login></app-login>
+    <app-login></app-login>
 </ng-template>

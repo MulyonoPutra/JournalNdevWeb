@@ -46,12 +46,12 @@ export class IndexComponent implements OnInit {
   findAllPost(): void {
     this.posts = [];
     this.postService.getAllPost().subscribe((value: Post[]) => {
-      this.posts = value;
+      this.posts = value.slice(1, 5);
       console.log(value);
     });
   }
 
-  gotoDetail(post: any): void {
+  postDetailsRoute(post: any): void {
     this.postObject = post;
     this.router.navigateByUrl('/post-details/' + post.id);
   }

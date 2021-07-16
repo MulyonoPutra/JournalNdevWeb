@@ -11,20 +11,26 @@ import { TokenService } from 'src/app/core/service/token.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-
   public isLoggedIn = false;
 
   public posts: Post[] = [];
 
   public search: Search = new Search();
 
-  constructor(
-    private tokenService: TokenService,
-    private router: Router,
-  ) {}
+  isAdmin = false;
+
+  roles!: string[];
+
+  constructor(private tokenService: TokenService, private router: Router) {}
 
   ngOnInit() {
     this.getUserToken();
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach((rol) => {
+      if (rol === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    });
   }
 
   getUserToken() {

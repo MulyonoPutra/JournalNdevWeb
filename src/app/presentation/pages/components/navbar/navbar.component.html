@@ -1,88 +1,79 @@
 <div class="container">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light shift">
-    <div class="container-fluid">
-      <div class="justify-content-start">
-        <a class="font-style" routerLink="/"> JOURNAL NDEP </a>
-      </div>
-      <div class="justify-content-end">
-        <ul>
-          <li class="nav-item" *ngIf="!isLoggedIn">
-            <a class="nav-link" routerLink="/login">
-              <i class="fas fa-sign-in-alt"></i>
-              Login</a
-            >
-          </li>
-          <li class="nav-item" *ngIf="isLoggedIn" (click)="onLogOut()">
-            <a class="nav-link" style="cursor: pointer">
-              <i class="fas fa-door-open"></i>
-              Logout
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <hr />
-  <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light shift">
-      <div class="container-fluid">
-        <div
-          class="collapse navbar-collapse d-flex justify-content-start"
-          id="navbarNav"
-        >
-          <ul class="navbar-nav">
-            <li class="nav-item" *ngIf="isLoggedIn">
-              <a class="nav-link" routerLink="/">Home</a>
-            </li>
-
-            <li class="nav-item" *ngIf="isLoggedIn">
-              <a class="nav-link" routerLink="/card">Card</a>
-            </li>
-
-            <li class="nav-item" *ngIf="isLoggedIn">
-              <a class="nav-link" routerLink="/post"
-                ><i class="far fa-list-alt"></i> Post</a
-              >
-            </li>
-            <li class="nav-item" *ngIf="isLoggedIn">
-              <a class="nav-link" routerLink="/category"
-                ><i class="far fa-list-alt"></i> Category</a
-              >
-            </li>
-            <li class="nav-item" *ngIf="isLoggedIn">
-              <a class="nav-link" routerLink="/feedback"
-                ><i class="far fa-list-alt"></i> Feedback</a
-              >
-            </li>
-          </ul>
+        <div class="container-fluid">
+            <div class="justify-content-start">
+                <a class="font-style" routerLink="/">
+                    JOURNAL NDEP
+                </a>
+            </div>
+            <div class="justify-content-end">
+                <ul>
+                    <li class="nav-item" *ngIf="!isLoggedIn">
+                        <a class="nav-link" routerLink="/login">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Login</a>
+                    </li>
+                    <li class="nav-item" *ngIf="isLoggedIn">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="isAdmin">
+                                Admin
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" routerLink="/new">Create New Post</a>
+                                <a class="dropdown-item" routerLink="/card-new">Create New Folding Card</a>
+                                <a class="dropdown-item" routerLink="/category-update">Create New Category</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item" *ngIf="isLoggedIn" (click)="onLogOut()">
+                        <a class="nav-link" style="cursor: pointer">
+                            <i class="fas fa-door-open"></i>
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="justify-content-end" *ngIf="isLoggedIn">
-          <ul class="navbar-nav row">
-            <li class="nav-item col">
-              <img
-                src="/assets/images/png/instagram.png"
-                alt="instagram"
-                class="social-icon"
-              />
-            </li>
-            <li class="nav-item col" *ngIf="isLoggedIn">
-              <img
-                src="/assets/images/png/facebook.png"
-                alt="facebook"
-                class="social-icon"
-              />
-            </li>
-
-            <li class="nav-item col" *ngIf="isLoggedIn">
-              <img
-                src="/assets/images/png/twitter.png"
-                alt="twitter"
-                class="social-icon"
-              />
-            </li>
-          </ul>
-        </div>
-      </div>
     </nav>
-  </div>
+    <hr/>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shift">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse d-flex justify-content-start" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item" *ngIf="isLoggedIn">
+                            <a class="nav-link" routerLink="/">Home</a>
+                        </li>
+                        <li class="nav-item" *ngIf="isLoggedIn">
+                            <a class="nav-link" routerLink="/card">Flipped Card</a>
+                        </li>
+                        <li class="nav-item" *ngIf="isLoggedIn">
+                            <a class="nav-link" routerLink="/post">
+                                <i class="far fa-list-alt"></i>
+                                Post</a>
+                        </li>
+                        <li class="nav-item" *ngIf="isLoggedIn">
+                            <a class="nav-link" routerLink="/feedback">
+                                <i class="far fa-list-alt"></i>
+                                Feedback</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="justify-content-end" *ngIf="isLoggedIn">
+                    <ul class="navbar-nav row">
+                        <li class="nav-item col">
+                            <img src="/assets/images/png/instagram.png" alt="instagram" class="social-icon"/>
+                        </li>
+                        <li class="nav-item col" *ngIf="isLoggedIn">
+                            <img src="/assets/images/png/facebook.png" alt="facebook" class="social-icon"/>
+                        </li>
+
+                        <li class="nav-item col" *ngIf="isLoggedIn">
+                            <img src="/assets/images/png/twitter.png" alt="twitter" class="social-icon"/>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
 </div>

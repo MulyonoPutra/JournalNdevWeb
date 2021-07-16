@@ -1,78 +1,64 @@
 <div class="container">
-  <div class="container" class="pull-left readMore">
-    <div class="container">
-      <div class="d-flex bd-highlight mb-3">
-        <div class="me-auto p-2 bd-highlight">
-          <div>
-            <a routerLink="/new">
-              <button class="btn btn-primary">New Post</button>
-            </a>
-          </div>
-        </div>
-        <div class="p-2 bd-highlight">
-          <div style="width: 300px" class="input-group mb-3" *ngIf="isLoggedIn">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Find By Author"
-              aria-label="Find By Author"
-              aria-describedby="searchAuthor"
-              [(ngModel)]="search.searchKey"
-              [ngModelOptions]="{ standalone: true }"
-            />
-            <button
-              class="btn btn-primary"
-              type="button"
-              id="search-btn"
-              (click)="findByAuthor()"
-              [disabled]="!search.searchKey"
-            >
-              Search
-            </button>
-            <button
-              class="btn btn-primary"
-              type="button"
-              id="search-btn"
-              (click)="findAllPost()"
-              [disabled]="!search.searchKey"
-            >
-              Refresh
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Content -->
-    <div class="row">
-      <div class="mt-3 col-md-3 position-relative" *ngFor="let post of postCollection">
-        <div class="card box" style="width: 21rem" data-aos="zoom-in">
-          <img
-            [src]="'data:' + post.imagesContentType + ';base64,' + post.images"
-            class="card-img-top"
-          />
-          <div class="card-body">
-            <h5 class="card-title">{{ post?.title }}</h5>
-            <p>{{ post.category_post?.name }}</p>
-            <p class="text" [innerHTML]="post.content"></p>
-            <a style="color: #fd0dfd" (click)="gotoDetail(post)">
-              <p>Read More..</p>
-            </a>
-          </div>
-          <div class="card-footer">
+    <div class="container" class="pull-left readMore">
+        <div class="container">
             <div class="d-flex bd-highlight mb-3">
-              <div class="font-size me-auto p-2 bd-highlight">
-                {{ calculateDiff(post) }} {{ hourTime(post) }}
-              </div>
-              <div class="font-size p-2 bd-highlight"></div>
-              <div class="font-size p-2 bd-highlight">
-                {{ post?.author }}
-              </div>
+                <div class="me-auto p-2 bd-highlight">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Category
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <ul class="dropdown-item" *ngFor="let category of categories">
+                                <li [routerLink]="'/category/' + category.id">
+                                    {{ category.name }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-2 bd-highlight">
+                    <div style="width: 300px" class="input-group mb-3" *ngIf="isLoggedIn">
+                        <input type="text" class="form-control" placeholder="Find By Author" aria-label="Find By Author" aria-describedby="searchAuthor" [(ngModel)]="search.searchKey" [ngModelOptions]="{ standalone: true }"/>
+                        <button class="btn btn-primary" type="button" id="search-btn" (click)="findByAuthor()" [disabled]="!search.searchKey">
+                            Search
+                        </button>
+                        <button class="btn btn-primary" type="button" id="search-btn" (click)="findAllPost()" [disabled]="!search.searchKey">
+                            Refresh
+                        </button>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <div class="col-md-3"></div>
+
+        <!-- Content -->
+        <div class="row">
+            <div class="mt-3 col-md-3 position-relative" *ngFor="let post of postCollection">
+                <div class="card box" style="width: 21rem" data-aos="zoom-in">
+                    <img [src]="'data:' + post.imagesContentType + ';base64,' + post.images" class="card-img-top"/>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post?.title }}</h5>
+                        <p>{{ post.category_post?.name }}</p>
+                        <p class="text" [innerHTML]="post.content"></p>
+                        <a style="color: #fd0dfd" (click)="postDetailsRoute(post)">
+                            <p>Read More..</p>
+                        </a>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex bd-highlight mb-3">
+                            <div class="font-size me-auto p-2 bd-highlight">
+                                {{ calculateDiff(post) }}
+                                {{ hourTime(post) }}
+                            </div>
+                            <div class="font-size p-2 bd-highlight"></div>
+                            <div class="font-size p-2 bd-highlight">
+                                {{ post?.author }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
     </div>
-  </div>
 </div>
+

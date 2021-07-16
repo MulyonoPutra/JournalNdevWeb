@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/app/core/domain/entities/post';
 import { PostRepository } from 'src/app/core/repository/post.repository';
 import { UtilityService } from 'src/app/core/service/utils/utility.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-category-details',
@@ -11,14 +12,19 @@ import { UtilityService } from 'src/app/core/service/utils/utility.service';
 })
 export class CategoryDetailsComponent implements OnInit {
 
+  public post: Post;
+  
   public postCollection: Post[] = [];
 
   public currentCategoryId: number;
 
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private postService: PostRepository,
-    private utils: UtilityService
+    private utils: UtilityService,
+    private location: Location,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -45,6 +51,11 @@ export class CategoryDetailsComponent implements OnInit {
       });
   }
 
+  postDetailsRoute(post: any): void {
+    this.post = post;
+    this.router.navigateByUrl('/post-details/' + post.id);
+  }
+
   calculateDiff(date: any) {
     let start = new Date().getTime();
     let end = new Date(date.createdDate).getTime();
@@ -60,6 +71,7 @@ export class CategoryDetailsComponent implements OnInit {
     }
   }
 
+
   hourTime(key: any) {
     let start = new Date().getTime();
     let end = new Date(key.createdDate).getTime();
@@ -73,5 +85,9 @@ export class CategoryDetailsComponent implements OnInit {
     } else {
       return (key = 'Hours Ago');
     }
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }

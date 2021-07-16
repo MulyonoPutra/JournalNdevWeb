@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lexend&display=swap");
 @import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/dist/css/bootstrap.min.css";
 
 .font-style {
   font-family: "Lexend", sans-serif;
@@ -34,9 +35,9 @@ body {
 }
 
 .btn-primary {
-    color: #fff;
-    background-color: #fd0dfd !important;
-    border-color: #fd0dfd !important;
+  color: #fff;
+  background-color: #fd0dfd !important;
+  border-color: #fd0dfd !important;
 }
 
 .btn-primary:hover {
@@ -62,7 +63,7 @@ a:hover {
 
 .empty {
   height: 250px;
-  width:250px
+  width: 250px
 }
 
 ::placeholder {
@@ -73,10 +74,14 @@ a:hover {
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
- color: #fd0dfd !important;
+  color: #fd0dfd !important;
 }
 
 ::-ms-input-placeholder {
   /* Microsoft Edge */
- color: #fd0dfd !important;
+  color: #fd0dfd !important;
+}
+
+ul {
+    list-style-type: none;
 }

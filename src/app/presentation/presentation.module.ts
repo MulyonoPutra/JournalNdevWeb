@@ -9,6 +9,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PostComponent } from './pages/post/list/post.component';
 import { IndexComponent } from './pages/index/index.component';
 import { LoginComponent } from './pages/authentication/login/login.component';
+import { NoDataComponent } from './pages/no-data/no-data.component';
 import { NavbarComponent } from './pages/components/navbar/navbar.component';
 import { FooterComponent } from './pages/components/footer/footer.component';
 import { FeedbackComponent } from './pages/feedback/feedback.component';
@@ -28,21 +29,23 @@ import { CategoryDetailsComponent } from './pages/category/details/category-deta
 import { FoldingCardUpdateComponent } from './pages/folding-card/update/folding-card-update.component';
 import { FoldingCardDetailsComponent } from './pages/folding-card/details/folding-card-details.component';
 
-/* Others */
-import { EditorModule } from '@tinymce/tinymce-angular';
-import { NgxSpinnerModule } from 'ngx-spinner';
+/* Service */
 import { PostRepository } from '../core/repository/post.repository';
 import { CardsRepository } from '../core/repository/cards.repository';
 import { FeedbackRepository } from '../core/repository/feedback.repository';
 import { CategoryRepository } from '../core/repository/category.repository';
+
 import { PostServiceImpl } from '../core/service/impl/post.service-impl';
-import { FeedbackServiceImpl } from '../core/service/impl/feedback.service-impl';
 import { CardsServiceImpl } from '../core/service/impl/cards.service-impl';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FeedbackServiceImpl } from '../core/service/impl/feedback.service-impl';
 import { CategoryServiceImpl } from '../core/service/impl/category.service-impl';
-import { HttpErrorInterceptor } from '../core/interceptors/http-error.interceptor';
 import { ProdGuardService as guard } from '../core/guards/prod-guard.service';
-import { NoDataComponent } from './pages/no-data/no-data.component';
+
+/* Others */
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpErrorInterceptor } from '../core/interceptors/http-error.interceptor';
 
 const routes: Routes = [
   {
@@ -56,7 +59,10 @@ const routes: Routes = [
       { path: 'category-update', component: CategoryUpdateComponent },
       { path: 'category/:id', component: CategoryDetailsComponent },
 
-      { path: 'card', component: FoldingCardComponent },
+      {
+        path: 'card',
+        component: FoldingCardComponent,
+      },
       { path: 'card-new', component: FoldingCardUpdateComponent },
 
       { path: 'post', component: PostComponent },

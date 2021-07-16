@@ -1,6 +1,5 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Cards } from 'src/app/core/domain/entities/cards';
-import { CardCollection } from 'src/app/core/domain/static/folding-card';
 import { CardsRepository } from 'src/app/core/repository/cards.repository';
 import { TokenService } from 'src/app/core/service/token.service';
 import { UtilityService } from 'src/app/core/service/utils/utility.service';
@@ -11,12 +10,16 @@ import { UtilityService } from 'src/app/core/service/utils/utility.service';
   styleUrls: ['./folding-card.component.scss'],
 })
 export class FoldingCardComponent implements OnInit, OnDestroy {
-  
   isLoggedIn = false;
 
   username = '';
 
   cards: Cards[] = [];
+
+  isAdmin = false;
+  isUser = false;
+
+  roles!: string[];
 
   constructor(
     private tokenService: TokenService,
@@ -29,8 +32,15 @@ export class FoldingCardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.utils.setSpinner();
     this.getUserToken();
     this.findAllCards();
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach((rol) => {
+      if (rol === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    });
   }
 
   getUserToken(): void {

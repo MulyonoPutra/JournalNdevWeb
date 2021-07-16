@@ -25,7 +25,7 @@ export class CategoryComponent implements OnInit {
 
   constructor(
     private tokenService: TokenService,
-    private _activatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private utils: UtilityService,
     private categoryService: CategoryRepository,
     private router: Router
@@ -36,24 +36,24 @@ export class CategoryComponent implements OnInit {
     this.findAllCategory();
     this.utils.setSpinner();
 
-    this._activatedRoute.paramMap.subscribe(() => {
+    this.activatedRoute.paramMap.subscribe(() => {
       this.handlePostByCategory();
     });
   }
 
   handlePostByCategory() {
     const hasCategoryId: boolean =
-      this._activatedRoute.snapshot.paramMap.has('id');
+      this.activatedRoute.snapshot.paramMap.has('id');
 
     if (hasCategoryId) {
       this.currentCategoryId =
-        +this._activatedRoute.snapshot.paramMap.get('id')!;
+        +this.activatedRoute.snapshot.paramMap.get('id')!;
     } else {
       this.currentCategoryId = 1;
     }
   }
 
-  gotoDetail(post: any): void {
+  postDetailsRoute(post: any): void {
     this.postObject = post;
     this.router.navigateByUrl('/category-details/' + post.id);
   }

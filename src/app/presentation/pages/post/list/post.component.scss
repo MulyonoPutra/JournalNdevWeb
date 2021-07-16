@@ -2,9 +2,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* number of lines to show */
+  -webkit-line-clamp: 3;
+  /* number of lines to show */
   -webkit-box-orient: vertical;
 }
+
 .card-footer {
   padding: 0.5rem 1rem;
   background-color: #ffffff;
@@ -32,13 +34,11 @@
 }
 
 .btn.btn-primary[disabled] {
-    color: #fff;
-    background-color: #fd0dfd;
-    border-color: #fd0dfd;
+  color: #fff;
+  background-color: #fd0dfd;
+  border-color: #fd0dfd;
 }
 
 .form-control {
-   border-color: #fd0dfd;
+  border-color: #fd0dfd;
 }
-
-

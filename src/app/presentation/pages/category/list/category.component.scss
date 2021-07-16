@@ -7,11 +7,9 @@
   background-clip: border-box;
   border-radius: 20px;
   border: white;
-  background-image: linear-gradient(
-    to right,
-    rgb(255, 0, 221),
-    rgb(252, 252, 252)
-  );
+  background-image: linear-gradient(to right,
+      rgb(255, 0, 221),
+      rgb(252, 252, 252));
 }
 
 a {

@@ -9,6 +9,7 @@ import { PostRepository } from '../repository/post.repository';
 export type EntityArrayResponseType = HttpResponse<Category[]>;
 @Injectable()
 export class PostService extends PostRepository {
+  
   constructor(private postRepository: PostRepository) {
     super();
   }

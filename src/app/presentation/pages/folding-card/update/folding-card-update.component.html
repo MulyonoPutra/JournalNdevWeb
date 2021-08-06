@@ -14,14 +14,14 @@
                       == null">
                       <label class="form-control-label" for="field_id">ID</label>
                       <input type="number" class="form-control" name="id"
-                        id="field_id" data-cy="id" formControlName="id"
-                        [readonly]="true" />
+                        id="field_id" data-cy="id"
+                        formcontrolname="id" [readonly]="true" />
                     </div>
                     <div class="form-group">
                       <label class="form-control-label" for="field_title">Title</label>
                       <input type="text" class="form-control" name="title"
-                        id="field_title" data-cy="title" formControlName="title"
-                        />
+                        id="field_title" data-cy="title"
+                        formcontrolname="title" />
                       <div *ngIf="editForm.get('title')!.invalid &&
                         (editForm.get('title')!.dirty ||
                         editForm.get('title')!.touched)">
@@ -38,8 +38,9 @@
                         <img [src]="'data:' +
                           editForm.get('imagesContentType')!.value +
                           ';base64,' +
-                          editForm.get('images')!.value"style="max-height:
-                          100px" *ngIf="editForm.get('images')!.value" alt="post
+                          editForm.get('images')!.value" style="max-height:
+                          100px"
+                          *ngIf="editForm.get('images')!.value" alt="post
                           image" />
                         <div *ngIf="editForm.get('images')!.value"
                           class="form-text text-danger clearfix">
@@ -48,11 +49,12 @@
                             {{ byteSize(editForm.get("images")!.value) }}</span>
                           &nbsp;
                           <img src="/assets/images/svg/close.svg"
-                            class="social-media-icon" alt="" (click)="clearInputImage(
+                            class="social-media-icon" alt=""
+                            (click)="clearInputImage(
                             'images',
                             'imagesContentType',
                             'file_images'
-                            )"/>
+                            )" />
                         </div>
                         <input type="file" id="file_images" data-cy="images"
                           (change)="setFileData($event, 'images', true)"
@@ -60,10 +62,10 @@
                       </div>
                       <input type="hidden" class="form-control" name="images"
                         id="field_images" data-cy="images"
-                        formControlName="images" />
+                        formcontrolname="images" />
                       <input type="hidden" class="form-control"
                         name="imagesContentType" id="field_imagesContentType"
-                        formControlName="imagesContentType" />
+                        formcontrolname="imagesContentType" />
                       <div *ngIf="editForm.get('images')!.invalid &&
                         (editForm.get('images')!.dirty ||
                         editForm.get('images')!.touched)">

@@ -14,7 +14,6 @@ import { UtilityService } from 'src/app/core/service/utils/utility.service';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent implements OnInit {
-
   public post: Post;
 
   public isLoggedIn = false;
@@ -28,8 +27,6 @@ export class PostComponent implements OnInit {
   public categories: Category[] = [];
 
   public search: Search = new Search();
-
-
 
   constructor(
     private router: Router,

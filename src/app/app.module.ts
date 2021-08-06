@@ -1,5 +1,4 @@
 import { AppComponent } from './app.component';
-import { interceptorProvider } from './core/interceptors/prod-interceptor.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -12,6 +11,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ToastrModule } from 'ngx-toastr';
 import { MaterialModule } from './core/utility/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { httpInterceptorProviders } from './core/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +27,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
 
   bootstrap: [AppComponent],
-  providers: [interceptorProvider],
+  providers: [httpInterceptorProviders],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

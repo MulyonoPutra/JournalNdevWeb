@@ -5,82 +5,78 @@
         src="/assets/images/svg/category.svg"
         alt="Image"
         class="img-fluid"
-      />
+        />
     </div>
     <div class="col-md-6">
-  <div class="card position-relative">
-    <div class="card-header">Add Category</div>
-    <div class="card-body">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="">
-            <form
-              name="editForm"
-              role="form"
-              novalidate
-              (ngSubmit)="save()"
-              [formGroup]="editForm"
-            >
-              <div>
-                <div
-                  class="form-group"
-                  [hidden]="editForm.get('id')!.value == null"
-                >
-                  <label class="form-control-label" for="field_id">ID</label>
-                  <input
-                    matInput
-                    type="number"
-                    class="form-control"
-                    name="id"
-                    id="field_id"
-                    data-cy="id"
-                    formControlName="id"
-                    [readonly]="true"
-                  />
-                </div>
-                <div class="form-group">
-                  <mat-form-field appearance="outline" style="width: 520px; margin-right: 200px !;">
-                    <mat-label class="form-control-label" for="field_name"
-                      >Category Name</mat-label
-                    >
-                    <input
-                      matInput
-                      type="text"
-                      name="name"
-                      id="field_name"
-                      data-cy="name"
-                      formControlName="name"
-                    />
-                  </mat-form-field>
-                </div>
+      <div class="card position-relative">
+        <div class="card-header">Add Category</div>
+        <div class="card-body">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="">
+                <form
+                  name="editForm"
+                  role="form"
+                  novalidate
+                  (ngSubmit)="save()"
+                  [formGroup]="editForm">
+                  <div>
+                    <div
+                      class="form-group"
+                      [hidden]="editForm.get('id')!.value == null">
+                      <label class="form-control-label" for="field_id">ID</label>
+                      <input
+                        matInput
+                        type="number"
+                        class="form-control"
+                        name="id"
+                        id="field_id"
+                        data-cy="id"
+                        formControlName="id"
+                        [readonly]="true"
+                        />
+                    </div>
+                    <div class="form-group">
+                      <mat-form-field appearance="outline" style="width: 520px;
+                        margin-right: 200px !;">
+                        <mat-label class="form-control-label" for="field_name">Category
+                          Name</mat-label>
+                        <input
+                          matInput
+                          type="text"
+                          name="name"
+                          id="field_name"
+                          data-cy="name"
+                          formControlName="name"
+                          />
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  &nbsp;
+                  <div>
+                    <button
+                      type="button"
+                      id="cancel-save"
+                      class="btn btn-secondary"
+                      (click)="previousState()">
+                      <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                    </button>
+                    &nbsp;
+                    <button
+                      type="submit"
+                      id="save-entity"
+                      data-cy="entityCreateSaveButton"
+                      [disabled]="editForm.invalid || isSaving"
+                      class="btn btn-primary ml-3">
+                      <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                    </button>
+                  </div>
+                </form>
               </div>
-              &nbsp;
-              <div>
-                <button
-                  type="button"
-                  id="cancel-save"
-                  class="btn btn-secondary"
-                  (click)="previousState()"
-                >
-                  <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
-                </button>
-                &nbsp;
-                <button
-                  type="submit"
-                  id="save-entity"
-                  data-cy="entityCreateSaveButton"
-                  [disabled]="editForm.invalid || isSaving"
-                  class="btn btn-primary ml-3"
-                >
-                  <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
-                </button>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
     </div>
   </div>
 

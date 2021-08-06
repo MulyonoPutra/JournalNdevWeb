@@ -1,7 +1,6 @@
 import { HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Search } from '../domain/dto/search';
 import { Cards } from '../domain/entities/cards';
 import { CardsRepository } from '../repository/cards.repository';
 
@@ -17,9 +16,9 @@ export class CardsService extends CardsRepository {
   getAllCards(): Observable<Cards[]> {
     return this.cardsRepository.getAllCards();
   }
+  
   addCards(cards: Cards): Observable<any> {
     return this.cardsRepository.addCards(cards);
   }
-
 
 }

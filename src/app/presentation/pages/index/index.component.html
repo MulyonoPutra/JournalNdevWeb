@@ -13,7 +13,7 @@
                         <img [src]="'data:' + post.imagesContentType + ';base64,' + post.images" class="card-img-top"/>
                         <div class="card-body">
                             <h5 class="card-title">{{ post?.title }}</h5>
-                            <p>{{ post.category_post?.name }}</p>
+                            <p style="color: #fd0dfd">{{ post.category_post?.name }}</p>
                             <p class="text" [innerHTML]="post.content"></p>
                             <a style="color: #fd0dfd" (click)="postDetailsRoute(post)">
                                 <p>Read More..</p>
@@ -42,7 +42,7 @@
             <div class="text-center">
                 <div>
                     <a routerLink="/post">
-                        <button class="btn btn-primary">View More Writing..</button>
+                        <button class="btn btn-primary">View More ..</button>
                     </a>
                 </div>
             </div>

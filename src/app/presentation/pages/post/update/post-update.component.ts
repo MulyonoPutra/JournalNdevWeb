@@ -27,7 +27,6 @@ import { TokenService } from 'src/app/core/service/token.service';
   styleUrls: ['./post-update.component.scss'],
 })
 export class PostUpdateComponent implements OnInit, OnDestroy {
-  
   public isLoggedIn = false;
 
   public isSaving = false;
